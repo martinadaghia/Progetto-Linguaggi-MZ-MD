@@ -1,0 +1,3 @@
+Numero totale di errori: 2
+L'errore è il seguente: linea 8-11: extraneous input ';' expecting '}'
+L'errore è il seguente: linea 9-6: mismatched input '<EOF>' expecting {'}', '*', '/', '+', '-', '>', '<', '>=', '<=', '==', '&&', '||'}
