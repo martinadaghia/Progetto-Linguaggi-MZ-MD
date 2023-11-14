@@ -17,17 +17,17 @@ public class FunNode implements Node {
     private int nesting ;
     private String flabel ;
 
-    public FunNode (String _id, Type _type, ArrayList<ParamNode> _parlist, Node _body) {
-        id = _id ;
-        returntype = _type;
-        parlist = _parlist ;
-        body = _body ;
+    public FunNode (String id, Type type, ArrayList<ParamNode> parlist, Node body) {
+        this.id = id ;
+        this.returntype = type;
+        this.parlist = parlist ;
+        this.body = body ;
     }
 
-    public ArrayList<SemanticError> checkSemantics(SymbolTable ST, int _nesting) {
+    public ArrayList<SemanticError> checkSemantics(SymbolTable ST, int nesting) {
 
         ArrayList<SemanticError> errors = new ArrayList<SemanticError>();
-        nesting = _nesting ;
+        this.nesting = nesting ;
 
         // Salviamo la vecchia ST da restorare dopo aver controllato il body
         SymbolTable oldST = new SymbolTable();
@@ -101,7 +101,7 @@ public class FunNode implements Node {
                         + "pop \n"
                         + "rsub RA \n"
         );
-        return  "push "+ flabel +"\n";
+        return  "//start FunNode\n" + "push "+ flabel +"\n" + "//end FunNode\n";
     }
 
     public String toPrint(String s) {

@@ -4,18 +4,18 @@ import semanticanalysis.SemanticError;
 import semanticanalysis.SymbolTable;
 
 import java.util.ArrayList;
-/*QUESTA è CORRETTA*/
+
 public class ProgNode implements Node {
     private Node exp;
 
-    public ProgNode(Node _exp) {
-        exp = _exp;
+    public ProgNode(Node exp) {
+        this.exp = exp;
     }
 
     @Override
-    public ArrayList<SemanticError> checkSemantics(SymbolTable ST, int _nesting) {
+    public ArrayList<SemanticError> checkSemantics(SymbolTable ST, int nesting) {
 
-        return exp.checkSemantics(ST, _nesting);
+        return exp.checkSemantics(ST, nesting);
     }
 
     @Override
@@ -25,7 +25,7 @@ public class ProgNode implements Node {
 
     @Override
     public String codeGeneration() {
-        return exp.codeGeneration() + "halt\n";
+        return "//start ProgNode\n" + exp.codeGeneration() + "halt\n" + "//end ProgNode\n";
     }
 
     @Override

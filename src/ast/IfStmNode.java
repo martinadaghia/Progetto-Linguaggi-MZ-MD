@@ -101,14 +101,16 @@ public class IfStmNode implements Node {
         for(Node eb : elsebranches)
             elseB.append(eb.codeGeneration());
 
-        return    guard.codeGeneration()
-                + "storei T1 0 \n"
+        return    "//start IfStmNode\n"
+                + guard.codeGeneration()
+                + "storei T1 1 \n"
                 + "beq A0 T1 "+ lelse + "\n"
-                + thenB
+                + elseB
                 + "b " + lend + "\n"
                 + lelse + ":\n"
-                + elseB
-                + lend + ":\n" ;
+                + thenB
+                + lend + ":\n"
+                + "//end IfStmNode\n";
     }
 
     public String toPrint(String s) {

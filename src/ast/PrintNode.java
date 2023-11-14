@@ -21,7 +21,7 @@ public class PrintNode implements Node {
     }
 
     public String codeGeneration() {
-        return exp.codeGeneration()+"print\n";
+        return "//start PrintNode\n" + exp.codeGeneration()+"print\n" + "//end PrintNode\n";
     }
 
     public String toPrint(String s) {

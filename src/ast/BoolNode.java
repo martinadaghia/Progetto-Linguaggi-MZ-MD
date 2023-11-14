@@ -9,8 +9,8 @@ public class BoolNode implements Node {
 
     private boolean val;
 
-    public BoolNode (boolean _val) {
-        val = _val ;
+    public BoolNode (boolean val) {
+        this.val = val ;
     }
 
     public ArrayList<SemanticError> checkSemantics(SymbolTable ST, int _nesting) {
@@ -22,7 +22,7 @@ public class BoolNode implements Node {
     }
 
     public String codeGeneration() {
-        return "storei A0 "+(val?1:0)+"\n";
+        return "//start BoolNode\n" + "storei A0 "+(val?1:0)+"\n" + "//and BoolNode\n";
     }
 
     public String toPrint(String s) {

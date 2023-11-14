@@ -1,3 +1,4 @@
-Numero totale di errori: 2
-L'errore è il seguente: linea 8-11: extraneous input ';' expecting '}'
-L'errore è il seguente: linea 9-6: mismatched input '<EOF>' expecting {'}', '*', '/', '+', '-', '>', '<', '>=', '<=', '==', '&&', '||'}
+Numero totale di errori: 3
+L'errore è il seguente: linea 4-1: no viable alternative at input 'intxif'
+L'errore è il seguente: linea 4-1: missing '}' at 'if'
+L'errore è il seguente: linea 6-0: extraneous input '}' expecting {<EOF>, '(', 'if', 'true', 'false', '!', INTEGER, ID}

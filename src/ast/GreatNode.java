@@ -40,7 +40,8 @@ public class GreatNode implements Node {
         String labelTrue = SimpLanlib.freshLabel();
         String labelEnd = SimpLanlib.freshLabel();
 
-        return left.codeGeneration() +
+        return "//start GreatNode\n" +
+                left.codeGeneration() +
                 "pushr A0 \n" +
                 right.codeGeneration() +
                 "popr T1 \n" +
@@ -49,7 +50,8 @@ public class GreatNode implements Node {
                 "b " + labelEnd + " \n" +
                 labelTrue + ": \n" +
                 "push 1 \n" +
-                labelEnd + ": \n";
+                labelEnd + ": \n" +
+                "//end GreatNode\n";
     }
 
     @Override

@@ -9,31 +9,33 @@ public class BodyNode implements Node {
     private ArrayList<Node> declarations;
     private ArrayList<Node> statements;
     private Node expression;
+    private int nesting ;
 
-    public BodyNode(ArrayList<Node> _declarations, ArrayList<Node> _statements, Node _expression) {
-        declarations = _declarations;
-        statements = _statements;
-        expression = _expression;
+    public BodyNode(ArrayList<Node> declarations, ArrayList<Node> statements, Node expression) {
+        this.declarations = declarations;
+        this.statements = statements;
+        this.expression = expression;
     }
 
     @Override
-    public ArrayList<SemanticError> checkSemantics(SymbolTable _ST, int _nesting) {
+    public ArrayList<SemanticError> checkSemantics(SymbolTable _ST, int nesting) {
+        this.nesting = nesting;
         ArrayList<SemanticError> errors = new ArrayList<>();
 
         if (declarations != null) {
             for (Node dec : declarations) {
-                errors.addAll(dec.checkSemantics(_ST, _nesting));
+                errors.addAll(dec.checkSemantics(_ST, nesting));
             }
         }
 
         if (statements != null) {
             for (Node stm : statements) {
-                errors.addAll(stm.checkSemantics(_ST, _nesting));
+                errors.addAll(stm.checkSemantics(_ST, nesting));
             }
         }
 
         if (expression != null) { //può esserci o no perchè nella grammatica c'è il ?
-            errors.addAll(expression.checkSemantics(_ST, _nesting));
+            errors.addAll(expression.checkSemantics(_ST, nesting));
         }
 
         return errors;
@@ -85,11 +87,11 @@ public class BodyNode implements Node {
         }
 
 
-        return "storei sp maxvalue-n"
-        + "store fp maxvalue"
-        + valutodec
-        + valutostm
-        + valutoexp;
+        return  "//start BodyNode\n" +  valutodec
+                + valutostm
+                + valutoexp
+                + "addi SP " + declarations.size() + "\n"
+                + "//and BodyNode\n";
 
     }
 

@@ -38,7 +38,8 @@ public class EqualNode implements Node {
     public String codeGeneration() {
         String ltrue = SimpLanlib.freshLabel();
         String lend = SimpLanlib.freshLabel();
-        return	left.codeGeneration()+
+        return	"//start EqualNode\n" +
+                left.codeGeneration()+
                 "pushr A0 \n" +
                 right.codeGeneration()+
                 "popr T1 \n" +
@@ -47,7 +48,8 @@ public class EqualNode implements Node {
                 "b " + lend + "\n" +
                 ltrue + ":\n"+
                 "storei A0 1\n" +
-                lend + ":\n";
+                lend + ":\n" +
+                "//and EqualNode\n" ;
     }
 
     public String toPrint(String s) {

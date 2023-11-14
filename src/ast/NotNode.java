@@ -35,14 +35,16 @@ public class NotNode implements Node {
         String labelTrue = SimpLanlib.freshLabel();
         String labelEnd = SimpLanlib.freshLabel();
 
-        return right.codeGeneration()
+        return "//start NotNode\n"
+                + right.codeGeneration()
                 + "store T1 1 \n"
                 + "beq A0 T1 " + labelTrue + "\n"
                 + "store A0 0 \n"
                 + "b " + labelEnd + "\n"
                 + labelTrue + ": \n"
                 + "store A0 1 \n"
-                + labelEnd + ": \n";
+                + labelEnd + ": \n"
+                + "//end NotNode\n";
     }
 
     public String toPrint(String s) {

@@ -9,9 +9,9 @@ public class DivNode implements Node {
     private Node left;
     private Node right;
 
-    public DivNode (Node _left, Node _right) {
-        left = _left ;
-        right = _right ;
+    public DivNode (Node left, Node right) {
+        this.left = left ;
+        this.right = right ;
     }
 
     public ArrayList<SemanticError> checkSemantics(SymbolTable ST, int _nesting) {
@@ -33,12 +33,14 @@ public class DivNode implements Node {
     }
 
     public String codeGeneration() {
-        return 	left.codeGeneration()
+        return 	"//start DivNode\n"
+                + left.codeGeneration()
                 + "pushr A0 \n"
                 + right.codeGeneration()
                 + "popr T1 \n"
                 + "div T1 A0 \n"
-                + "popr A0 \n";
+                + "popr A0 \n"
+                + "//and DivNode\n" ;
     }
 
     public String toPrint(String s) {

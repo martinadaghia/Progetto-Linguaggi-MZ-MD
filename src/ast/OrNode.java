@@ -10,9 +10,9 @@ public class OrNode implements Node {
     private Node left;
     private Node right;
 
-    public OrNode(Node _left, Node _right) {
-        left = _left;
-        right = _right;
+    public OrNode(Node left, Node right) {
+        this.left = left;
+        this.right = right;
     }
 
     @Override
@@ -40,7 +40,8 @@ public class OrNode implements Node {
         String labelFalse = SimpLanlib.freshLabel();
         String labelEnd = SimpLanlib.freshLabel();
 
-        return left.codeGeneration() +
+        return "//start OrNode\n" +
+                left.codeGeneration() +
                 "storei T1 1 \n" + //metto 0 in A0 --> 0 = false
                 "beq A0 T1 \n" + "b " + labelEnd + "\n" + //se è uguale esco
                 //se è diverso valuto dx
@@ -48,7 +49,8 @@ public class OrNode implements Node {
                 "beq A0 T1 \n" + "b " + labelEnd +  "\n" +
                 "storei A0 0 \n" + "b " + labelFalse +  "\n" +
                 labelEnd + ": \n" +
-                "storei A0 1 \n" + labelFalse +  ": \n"
+                "storei A0 1 \n" + labelFalse +  ": \n" +
+                "//end OrNode\n"
                 ;
     }
 

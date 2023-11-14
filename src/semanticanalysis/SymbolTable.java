@@ -41,6 +41,7 @@ public class SymbolTable {
         return T ; //ritorno T che mi contiene tutte le info di id
     }
 
+
     /* nslookup(String id) cerca un id specificato nella tabella e restituisce il nesting level in cui viene trovato l'id*/
     public Integer nslookup(String id) {
         int n = symbol_table.size() - 1 ;
@@ -117,6 +118,7 @@ public class SymbolTable {
 		Se in input riceve un'ArrayList appartenente a un'altra ST non
 		referenziamo la ST precedente, ma ne creiamo una copia assestante
 	 */
+
     public void setSymbol_table(ArrayList<HashMap<String,STentry>> newST) {
         String currString = "";
         STentry currSTentry;
@@ -141,6 +143,8 @@ public class SymbolTable {
 
         this.symbol_table = currAL;
     }
+
+
     public void setOffset(ArrayList<Integer> newOffset) {
         this.offset = new ArrayList<Integer>(newOffset);
     }

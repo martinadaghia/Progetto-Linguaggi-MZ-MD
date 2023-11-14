@@ -9,9 +9,9 @@ public class SubNode implements Node {
     private Node left;
     private Node right;
 
-    public SubNode(Node _left, Node _right) {
-        left = _left;
-        right = _right;
+    public SubNode(Node left, Node right) {
+        this.left = left;
+        this.right = right;
     }
 
     public ArrayList<SemanticError> checkSemantics(SymbolTable ST, int _nesting) {
@@ -33,12 +33,14 @@ public class SubNode implements Node {
     }
 
     public String codeGeneration() {
-        return left.codeGeneration() +
+        return "//start SubNode\n" +
+                left.codeGeneration() +
                 "pushr A0 \n" +
                 right.codeGeneration() +
                 "popr T1 \n" +
-                "sub A0 T1 \n" +
-                "popr A0 \n";
+                "sub T1 A0\n" +
+                "popr A0 \n" +
+                "//end SubNode\n";
     }
 
     public String toPrint(String s) {

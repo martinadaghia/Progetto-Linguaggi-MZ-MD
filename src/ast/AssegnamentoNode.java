@@ -26,6 +26,7 @@ public class AssegnamentoNode implements Node {
         errors.addAll(exp.checkSemantics(ST, _nesting));
 
         STentry var = ST.lookup(id);
+
         // Controlliamo che la variabile esista
         if (var == null)
             errors.add(new SemanticError("Var " + id + " never declared"));
@@ -54,11 +55,12 @@ public class AssegnamentoNode implements Node {
         String getAR = "";
         for (int i = 0; i < nesting - stentry.getnesting(); i++)
             getAR += "store T1 0(T1) \n";
-        return    exp.codeGeneration()
+        return  "//start assegnamentoNode\n" +  exp.codeGeneration()
                 + "move AL T1 \n"
                 + getAR  //risalgo la catena statica
                 + "subi T1 " + stentry.getoffset() + "\n"
-                + "load A0 0(T1) \n";
+                + "load A0 0(T1) \n"
+                + "//and assegnamentoNode\n";
     }
 
     @Override

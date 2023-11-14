@@ -11,14 +11,14 @@ public class CallFunNode implements Node {
     private ArrayList<Node> parameters ;
     private int nesting ;
 
-    public CallFunNode(String _id, ArrayList<Node> _parameters) {
-        id = _id;
-        parameters = _parameters ;
+    public CallFunNode(String id, ArrayList<Node> parameters) {
+        this.id = id;
+        this.parameters = parameters ;
     }
 
-    public ArrayList<SemanticError> checkSemantics(SymbolTable ST, int _nesting) {
+    public ArrayList<SemanticError> checkSemantics(SymbolTable ST, int nesting) {
         ArrayList<SemanticError> errors = new ArrayList<SemanticError>();
-        nesting = _nesting ;
+        this.nesting = nesting ;
         STentry tmp = ST.lookup(id) ;
         if (tmp != null) {
             entry = tmp ;
@@ -65,7 +65,8 @@ public class CallFunNode implements Node {
             getAR+="store T1 0(T1) \n";
         // formato AR: control_link + access link + parameters + indirizzo di ritorno + dich_locali
 
-        return  "pushr FP \n"			// carico il frame pointer
+        return  "//start CallFunNode\n"
+                + "pushr FP \n"			// carico il frame pointer
                 + "move SP FP \n"
                 + "addi FP 1 \n"	// salvo in FP il puntatore all'indirizzo del frame pointer caricato
                 + "move AL T1\n"		// risalgo la catena statica
@@ -74,7 +75,8 @@ public class CallFunNode implements Node {
                 + parCode 				// calcolo i parametri attuali con l'access link del chiamante
                 + "move FP AL \n"
                 + "subi AL 1 \n"
-                + "jsub " + entry.getlabel() + "\n" ;
+                + "jsub " + entry.getlabel() + "\n"
+                + "//and CallFunNode\n";
     }
 
     public String toPrint(String s) {  //

@@ -11,9 +11,9 @@ public class ParamNode implements Node { //è uguale a parNode del prof ecc
     private Type type;
     private int nesting ;
 
-    public ParamNode(String _id, Type _type) {
-        id = _id ;
-        type = _type ;
+    public ParamNode(String id, Type type) {
+        this.id = id ;
+        this.type = type ;
     }
 
     public String getId(){
@@ -37,7 +37,7 @@ public class ParamNode implements Node { //è uguale a parNode del prof ecc
 
     //non utilizzato
     public String codeGeneration() {
-        return "";
+        return "//start ParamNode\n" + "" + "//end ParamNode\n" ;
     }
 
     public String toPrint(String s) {

@@ -10,9 +10,9 @@ public class AndNode implements Node {
     private Node left;
     private Node right;
 
-    public AndNode(Node _left, Node _right) {
-        left = _left;
-        right = _right;
+    public AndNode(Node left, Node right) {
+        this.left = left;
+        this.right = right;
     }
 
     @Override
@@ -40,7 +40,7 @@ public class AndNode implements Node {
         String labelTrue = SimpLanlib.freshLabel();
         String labelEnd = SimpLanlib.freshLabel();
 
-        return left.codeGeneration() + //left in A0
+        return "//start andNode\n" + left.codeGeneration() + //left in A0
                 "storei T1 0 \n" + //metto 0 in A0 --> 0 = false
                 "beq A0 T1 \n" + "b " + labelEnd + "\n" + //se è uguale esco
                 //se è diverso valuto dx
@@ -48,7 +48,8 @@ public class AndNode implements Node {
                 "beq A0 T1 \n" + "b " + labelEnd +  "\n" +
                 "storei A0 1 \n" + "b " + labelTrue +  "\n" +
                 labelEnd + ": \n" +
-                "storei A0 0 \n" + labelTrue +  ": \n"
+                "storei A0 0 \n" + labelTrue +  ": \n" +
+                "//end andNode\n"
                 ;
     }
 

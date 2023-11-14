@@ -21,7 +21,7 @@ public class IntNode implements Node {
     }
 
     public String codeGeneration() {
-        return "storei A0 "+val+"\n";
+        return "//start IntNode\n" + "storei A0 "+val+"\n" + "//end IntNode\n" ;
     }
 
     public String toPrint(String s) {

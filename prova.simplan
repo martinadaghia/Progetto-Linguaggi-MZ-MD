@@ -1,6 +1,7 @@
-int a;
-     void h(int n){
-  	  int x ; int y ;
-          if (n==0){ x = n+1 ;} else { h(n-1) ; y = x ;}
-     }
-     h(5) ;
+int x ;
+void f(int n){
+	if (n == 0) { n = 0 ; }       // n e` gia` uguale a 0; equivale a fare skip
+	else { x = x * n ; f(n-1) ; }
+}
+x = 1 ;
+f(10)

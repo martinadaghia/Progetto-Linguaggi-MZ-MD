@@ -97,27 +97,29 @@ public class IfExpNode implements Node {
     }
 
     public String codeGeneration() {
-        String lelse = SimpLanlib.freshLabel();
-        String lend = SimpLanlib.freshLabel();
-        StringBuilder thenStmString = new StringBuilder();
-        StringBuilder elseStmString = new StringBuilder();
+        String labelthen = SimpLanlib.freshLabel();
+        String labelend = SimpLanlib.freshLabel();
+        String thencode = "";
+        String elsecode = "";
 
-        for (Node ts: thenStms)
-            thenStmString.append(ts.codeGeneration());
+        for (Node thenC : thenStms) {
+            thencode += thenC.codeGeneration();
+        }
 
-        for (Node es: elseStms)
-            elseStmString.append(es.codeGeneration());
+        for (Node elseC : elseStms) {
+            elsecode += elseC.codeGeneration();
+        }
 
-        return    guard.codeGeneration()
-                + "storei T1 0 \n"
-                + "beq A0 T1 " + lelse + "\n"
-                + thenStmString
-                + thenExp.codeGeneration()
-                + "b " + lend + "\n"
-                + lelse + ":\n"
-                + elseStmString
-                + elseExp.codeGeneration()
-                + lend + ":\n" ;
+        return "//start IfExpNode\n"+
+                guard.codeGeneration() +
+                "storei T1 1 \n" +
+                "beq A0 T1 " + labelthen + "\n" +
+                elsecode + elseExp.codeGeneration() +
+                "b " + labelend + "\n" +
+                labelthen + ":\n" +
+                thencode + thenExp.codeGeneration() +
+                labelend + ":\n"
+                + "//end IfExpNode\n";
     }
 
     public String toPrint(String s) {

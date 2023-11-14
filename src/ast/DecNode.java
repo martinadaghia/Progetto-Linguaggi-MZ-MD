@@ -11,9 +11,9 @@ public class DecNode implements Node {
     private Node type;
     private int nesting;
 
-    public DecNode(String _id, Type _type) {
-        id = _id;
-        type = _type;
+    public DecNode(String id, Type type) {
+        this.id = id;
+        this.type = type;
     }
 
     @Override
@@ -37,7 +37,7 @@ public class DecNode implements Node {
 
     @Override
     public String codeGeneration() {
-        return "push 0 \n";
+        return "//start DecNode\n" + "push 0 \n" + "//and DecNode\n";
     }
 
     public String toPrint(String s) {

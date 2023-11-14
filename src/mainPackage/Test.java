@@ -3,6 +3,8 @@ import java.io.*;
 import java.util.ArrayList;
 
 import ast.SimpLanPlusVisitorImpl;
+import ast.SVMVisitorImpl;
+import evaluator.ExecuteVM;
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
 import parser.SimpLanPlusLexer;
@@ -89,7 +91,7 @@ public class Test {
                 SVMParser parserASM = new SVMParser(tokensASM);
 
                 //parserASM.assembly();
-/*
+
                 SVMVisitorImpl visitorSVM = new SVMVisitorImpl();
                 visitorSVM.visit(parserASM.assembly());
 
@@ -100,7 +102,7 @@ public class Test {
                 ExecuteVM vm = new ExecuteVM(visitorSVM.code);
                 vm.cpu();
 
- */
+
             }
         }
 

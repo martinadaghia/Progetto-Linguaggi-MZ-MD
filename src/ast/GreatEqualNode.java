@@ -40,7 +40,8 @@ public class GreatEqualNode implements Node {
         String labelTrue = SimpLanlib.freshLabel();
         String labelEnd = SimpLanlib.freshLabel();
 
-        return left.codeGeneration() +
+        return "//start GreatEqualNode\n" +
+                left.codeGeneration() +
                 "pushr A0 \n" +
                 right.codeGeneration() +
                 "popr T1 \n" +
@@ -49,7 +50,8 @@ public class GreatEqualNode implements Node {
                 "b " + labelEnd + " \n" +
                 labelTrue + ": \n" +
                 "push 1 \n" +
-                labelEnd + ": \n";
+                labelEnd + ": \n" +
+                "//end GreatEqualNode\n";
     }
 
     @Override

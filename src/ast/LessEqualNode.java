@@ -40,16 +40,18 @@ public class LessEqualNode implements Node {
         String labelTrue = SimpLanlib.freshLabel();
         String labelEnd = SimpLanlib.freshLabel();
 
-        return left.codeGeneration() +
+        return "//start LessEqualNode\n" +
+                left.codeGeneration() +
                 "pushr A0 \n" +
                 right.codeGeneration() +
                 "popr T1 \n" +
-                "ble T1 A0 " + labelTrue + " \n" + //branch if less than or equal to
-                "push 0 \n" +
+                "bleq T1 A0 " + labelTrue + " \n" + //branch if less than or equal to
+                "storei A0 0\n" +
                 "b " + labelEnd + " \n" +
                 labelTrue + ": \n" +
-                "push 1 \n" +
-                labelEnd + ": \n";
+                "storei A0 1 \n" +
+                labelEnd + ": \n" +
+                "//end LessEqualNode\n";
     }
 
     @Override

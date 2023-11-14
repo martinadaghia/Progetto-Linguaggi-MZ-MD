@@ -78,15 +78,17 @@ public class MultiDecNode implements Node {
         for (Node s: stm)
             stmCode += s.codeGeneration();
 
-        return  "move SP FP  \n"
+        return  "//start MultiDecNode\n"
+                + "move SP FP  \n"
                 + "pushr FP \n"
                 + "move SP AL \n"
                 + "pushr AL \n"
                 + declCode
                 + stmCode
                 + expCode
-                + "halt\n" +
-                SimpLanlib.getCode();
+                + "halt\n"
+                + SimpLanlib.getCode()
+                + "//end MultiDecNode\n";
     }
 
     public String toPrint(String s) {
