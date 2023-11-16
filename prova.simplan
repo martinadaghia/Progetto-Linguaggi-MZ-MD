@@ -1,2 +1,3 @@
-bool istrue == true;
-if (istrue) { x = 1.5; } else { y = 2.;}
+int mod(int a, int b) { a%b
+}
+mod(5, 3);

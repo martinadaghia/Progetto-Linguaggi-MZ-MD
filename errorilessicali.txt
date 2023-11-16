@@ -1,4 +1,3 @@
-Numero totale di errori: 2
+Numero totale di errori: 1
 * Analisi lessicale fallita
-ERRORE lessicale  alla linea 1, posizione 12: no viable alternative at input 'boolistrue=='
-ERRORE lessicale  alla linea 1, posizione 19: mismatched input ';' expecting {<EOF>, '*', '/', '+', '-', '>', '<', '>=', '<=', '==', '&&', '||'}
+ERRORE lessicale  alla linea 1, posizione 26: extraneous input 'b' expecting '}'
