@@ -19,7 +19,7 @@ public class ErrorListener extends BaseErrorListener {
 
     @Override
     public void syntaxError(Recognizer<?, ?> recognizer, Object offendingSymbol, int line, int charPositionInLine, String msg, RecognitionException e) {
-        Errors.add("linea " + line + "-" + charPositionInLine + ": " + msg);
+        Errors.add(" alla linea " + line + ", posizione " + charPositionInLine + ": " + msg);
         super.syntaxError(recognizer, offendingSymbol, line, charPositionInLine, msg, e);
     }
 

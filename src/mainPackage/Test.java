@@ -45,12 +45,15 @@ public class Test {
         //CONTROLLO ERRORI LESSICALI NO SINTATTICI
         if (numErrors > 0){
             System.out.println("The program was not in the right format. Exiting the compilation process now");
-
+            System.out.println("*** Analisi lessicale fallita ***");
             try {
                 PrintWriter writer = new PrintWriter("errorilessicali.txt", "UTF-8");
                 writer.write("Numero totale di errori: " + numErrors + "\n");
+                writer.println("* Analisi lessicale fallita");
+
                 for (String error : Errors) {
-                    writer.write("L'errore è il seguente: " + error + "\n");
+                    writer.println("ERRORE lessicale " + error);
+                    System.out.println("Errore lessicale " + error);
                 }
                 writer.close();
                 System.out.println("\n" + "Gli errori e il numero totale di errori sono stati scritti su errorilessicali.txt");

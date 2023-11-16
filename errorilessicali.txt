@@ -1,4 +1,4 @@
-Numero totale di errori: 3
-L'errore è il seguente: linea 4-1: no viable alternative at input 'intxif'
-L'errore è il seguente: linea 4-1: missing '}' at 'if'
-L'errore è il seguente: linea 6-0: extraneous input '}' expecting {<EOF>, '(', 'if', 'true', 'false', '!', INTEGER, ID}
+Numero totale di errori: 2
+* Analisi lessicale fallita
+ERRORE lessicale  alla linea 1, posizione 12: no viable alternative at input 'boolistrue=='
+ERRORE lessicale  alla linea 1, posizione 19: mismatched input ';' expecting {<EOF>, '*', '/', '+', '-', '>', '<', '>=', '<=', '==', '&&', '||'}
