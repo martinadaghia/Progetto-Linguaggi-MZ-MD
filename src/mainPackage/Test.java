@@ -35,7 +35,6 @@ public class Test {
         lexer.removeErrorListeners();
         lexer.addErrorListener(errorListener);
 
-
         SimpLanPlusVisitorImpl visitor = new SimpLanPlusVisitorImpl();
 
         parser.removeErrorListeners();
@@ -49,7 +48,7 @@ public class Test {
         //CONTROLLO ERRORI LESSICALI NO SINTATTICI
         if (numErrors > 0){
             System.out.println("The program was not in the right format. Exiting the compilation process now");
-            System.out.println("*** Analisi lessicale fallita ***");
+            System.out.println("** Analisi lessicale fallita **");
             try {
                 PrintWriter writer = new PrintWriter("errorilessicali.txt", "UTF-8");
                 writer.write("Numero totale di errori: " + numErrors + "\n");

@@ -1,3 +1,3 @@
-int pi;
-pi=6;
-pi
+/* In questo esempio, viene erroneamente scritto un valore decimale
+che non è accettato dalla grammatica utilizzata */
+int velocitaMedia = 60.5;
