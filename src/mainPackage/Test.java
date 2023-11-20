@@ -1,11 +1,14 @@
 package mainPackage;
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 
-import ast.SimpLanPlusVisitorImpl;
-import ast.SVMVisitorImpl;
+import ast.*;
 import evaluator.ExecuteVM;
 import org.antlr.v4.runtime.ANTLRInputStream;
+import org.antlr.v4.runtime.CharStream;
+import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 import parser.SimpLanPlusLexer;
 import parser.SimpLanPlusParser;
@@ -13,35 +16,36 @@ import semanticanalysis.SemanticError;
 import semanticanalysis.SymbolTable;
 import parser.SVMLexer;
 import parser.SVMParser;
-import ast.ErrorType;
-import ast.Node;
 
 public class Test {
     public static void main(String[] args) throws Exception {
 
         String fileName = "prova.simplan";
+        String input = new String(Files.readAllBytes(Paths.get(fileName).toAbsolutePath()));
 
-        FileInputStream is = new FileInputStream(fileName);
-        ANTLRInputStream input = new ANTLRInputStream(is);
-        SimpLanPlusLexer lexer = new SimpLanPlusLexer(input);
+        CharStream stream = CharStreams.fromString(input);
+        SimpLanPlusLexer lexer = new SimpLanPlusLexer(stream);
         CommonTokenStream tokens = new CommonTokenStream(lexer);
-
         SimpLanPlusParser parser = new SimpLanPlusParser(tokens);
+
+
+        ArrayList <String> errorsList = new ArrayList<>();
+        ErrorListener errorListener = new ErrorListener(errorsList);
+
+        lexer.removeErrorListeners();
+        lexer.addErrorListener(errorListener);
+
+
         SimpLanPlusVisitorImpl visitor = new SimpLanPlusVisitorImpl();
 
-
-        ArrayList <String> Errors = new ArrayList<>();
-        ErrorListener errorlis = new ErrorListener(Errors);
-        lexer.removeErrorListeners();
-        lexer.addErrorListener(errorlis);
         parser.removeErrorListeners();
-        parser.addErrorListener(errorlis);
+        //parser.addErrorListener(errorListener);
 
         Node ast = visitor.visit(parser.prog()); //generazione AST
 
         //Controllo il numero totale di errori che ha raccolto il listener, faccio il controllo sull'arraylist e stampo il numero totale di errori e gli errori sul file txt
-        int numErrors = Errors.size();
-        //System.out.println("prima dell'if " + numErrors);
+        int numErrors = errorsList.size();
+
         //CONTROLLO ERRORI LESSICALI NO SINTATTICI
         if (numErrors > 0){
             System.out.println("The program was not in the right format. Exiting the compilation process now");
@@ -51,7 +55,7 @@ public class Test {
                 writer.write("Numero totale di errori: " + numErrors + "\n");
                 writer.println("* Analisi lessicale fallita");
 
-                for (String error : Errors) {
+                for (String error : errorsList) {
                     writer.println("ERRORE lessicale " + error);
                     System.out.println("Errore lessicale " + error);
                 }
@@ -61,6 +65,7 @@ public class Test {
                 e.printStackTrace();
             }
             //chiudi il programma alla fine
+            System.exit(1);
         } else {
             //ERRORI SEMANTICI
             SymbolTable ST = new SymbolTable();
@@ -78,7 +83,6 @@ public class Test {
                     System.out.println("Type checking is WRONG!");
                 else
                     System.out.println(type.toPrint("Type checking ok! Type of the program is: "));
-
 
                 // CODE GENERATION  prova.SimpLan.asm
                 String code=ast.codeGeneration();
@@ -102,7 +106,7 @@ public class Test {
                 //if (lexerASM.lexicalErrors>0 || parserASM.getNumberOfSyntaxErrors()>0) System.exit(1);
 
                 System.out.println("Starting Virtual Machine...");
-                ExecuteVM vm = new ExecuteVM(visitorSVM.code);
+                ExecuteVM vm = new ExecuteVM(visitorSVM.code, type instanceof VoidType);
                 vm.cpu();
 
 

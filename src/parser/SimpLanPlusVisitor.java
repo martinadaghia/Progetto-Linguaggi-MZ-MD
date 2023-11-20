@@ -1,4 +1,4 @@
-// Generated from /Users/martinadaghia/Desktop/ProgettoLinguaggi/src/parser/SimpLanPlus.g4 by ANTLR 4.13.1
+// Generated from /Users/martinazauli/Desktop/ProgettoLinguaggi_MZ_MD/src/parser/SimpLanPlus.g4 by ANTLR 4.13.1
 package parser;
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 

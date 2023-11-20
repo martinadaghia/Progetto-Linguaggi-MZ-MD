@@ -1,4 +1,4 @@
-// Generated from /Users/martinadaghia/Desktop/ProgettoLinguaggi/src/parser/SimpLanPlus.g4 by ANTLR 4.13.1
+// Generated from /Users/martinazauli/Desktop/ProgettoLinguaggi_MZ_MD/src/parser/SimpLanPlus.g4 by ANTLR 4.13.1
 package parser;
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
@@ -17,8 +17,7 @@ public class SimpLanPlusParser extends Parser {
 		T__0=1, T__1=2, T__2=3, T__3=4, T__4=5, T__5=6, T__6=7, T__7=8, T__8=9, 
 		T__9=10, T__10=11, T__11=12, T__12=13, T__13=14, T__14=15, T__15=16, T__16=17, 
 		T__17=18, T__18=19, T__19=20, T__20=21, T__21=22, T__22=23, T__23=24, 
-		T__24=25, T__25=26, INTEGER=27, ID=28, WS=29, LINECOMENTS=30, BLOCKCOMENTS=31, 
-		ERR=32;
+		T__24=25, T__25=26, INTEGER=27, ID=28, WS=29, LINECOMENTS=30, BLOCKCOMENTS=31;
 	public static final int
 		RULE_prog = 0, RULE_dec = 1, RULE_param = 2, RULE_body = 3, RULE_type = 4, 
 		RULE_stm = 5, RULE_exp = 6;
@@ -41,8 +40,7 @@ public class SimpLanPlusParser extends Parser {
 		return new String[] {
 			null, null, null, null, null, null, null, null, null, null, null, null, 
 			null, null, null, null, null, null, null, null, null, null, null, null, 
-			null, null, null, "INTEGER", "ID", "WS", "LINECOMENTS", "BLOCKCOMENTS", 
-			"ERR"
+			null, null, null, "INTEGER", "ID", "WS", "LINECOMENTS", "BLOCKCOMENTS"
 		};
 	}
 	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
@@ -137,7 +135,7 @@ public class SimpLanPlusParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof parser.SimpLanPlusVisitor) return ((parser.SimpLanPlusVisitor<? extends T>)visitor).visitMultiDec(this);
+			if ( visitor instanceof SimpLanPlusVisitor ) return ((SimpLanPlusVisitor<? extends T>)visitor).visitMultiDec(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -158,7 +156,7 @@ public class SimpLanPlusParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof parser.SimpLanPlusVisitor) return ((parser.SimpLanPlusVisitor<? extends T>)visitor).visitSingleExp(this);
+			if ( visitor instanceof SimpLanPlusVisitor ) return ((SimpLanPlusVisitor<? extends T>)visitor).visitSingleExp(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -291,7 +289,7 @@ public class SimpLanPlusParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof parser.SimpLanPlusVisitor) return ((parser.SimpLanPlusVisitor<? extends T>)visitor).visitFunDec(this);
+			if ( visitor instanceof SimpLanPlusVisitor ) return ((SimpLanPlusVisitor<? extends T>)visitor).visitFunDec(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -312,7 +310,7 @@ public class SimpLanPlusParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof parser.SimpLanPlusVisitor) return ((parser.SimpLanPlusVisitor<? extends T>)visitor).visitVarDec(this);
+			if ( visitor instanceof SimpLanPlusVisitor ) return ((SimpLanPlusVisitor<? extends T>)visitor).visitVarDec(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -425,7 +423,7 @@ public class SimpLanPlusParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof parser.SimpLanPlusVisitor) return ((parser.SimpLanPlusVisitor<? extends T>)visitor).visitPara(this);
+			if ( visitor instanceof SimpLanPlusVisitor ) return ((SimpLanPlusVisitor<? extends T>)visitor).visitPara(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -494,7 +492,7 @@ public class SimpLanPlusParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof parser.SimpLanPlusVisitor) return ((parser.SimpLanPlusVisitor<? extends T>)visitor).visitBody1(this);
+			if ( visitor instanceof SimpLanPlusVisitor ) return ((SimpLanPlusVisitor<? extends T>)visitor).visitBody1(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -577,7 +575,7 @@ public class SimpLanPlusParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof parser.SimpLanPlusVisitor) return ((parser.SimpLanPlusVisitor<? extends T>)visitor).visitType(this);
+			if ( visitor instanceof SimpLanPlusVisitor ) return ((SimpLanPlusVisitor<? extends T>)visitor).visitType(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -641,7 +639,7 @@ public class SimpLanPlusParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof parser.SimpLanPlusVisitor) return ((parser.SimpLanPlusVisitor<? extends T>)visitor).visitAssignExp(this);
+			if ( visitor instanceof SimpLanPlusVisitor ) return ((SimpLanPlusVisitor<? extends T>)visitor).visitAssignExp(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -671,7 +669,7 @@ public class SimpLanPlusParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof parser.SimpLanPlusVisitor) return ((parser.SimpLanPlusVisitor<? extends T>)visitor).visitIfStm(this);
+			if ( visitor instanceof SimpLanPlusVisitor ) return ((SimpLanPlusVisitor<? extends T>)visitor).visitIfStm(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -695,7 +693,7 @@ public class SimpLanPlusParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof parser.SimpLanPlusVisitor) return ((parser.SimpLanPlusVisitor<? extends T>)visitor).visitFunExp(this);
+			if ( visitor instanceof SimpLanPlusVisitor ) return ((SimpLanPlusVisitor<? extends T>)visitor).visitFunExp(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -867,7 +865,7 @@ public class SimpLanPlusParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof parser.SimpLanPlusVisitor) return ((parser.SimpLanPlusVisitor<? extends T>)visitor).visitBaseExp(this);
+			if ( visitor instanceof SimpLanPlusVisitor ) return ((SimpLanPlusVisitor<? extends T>)visitor).visitBaseExp(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -894,7 +892,7 @@ public class SimpLanPlusParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof parser.SimpLanPlusVisitor) return ((parser.SimpLanPlusVisitor<? extends T>)visitor).visitAndor(this);
+			if ( visitor instanceof SimpLanPlusVisitor ) return ((SimpLanPlusVisitor<? extends T>)visitor).visitAndor(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -912,7 +910,7 @@ public class SimpLanPlusParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof parser.SimpLanPlusVisitor) return ((parser.SimpLanPlusVisitor<? extends T>)visitor).visitVarExp(this);
+			if ( visitor instanceof SimpLanPlusVisitor ) return ((SimpLanPlusVisitor<? extends T>)visitor).visitVarExp(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -942,7 +940,7 @@ public class SimpLanPlusParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof parser.SimpLanPlusVisitor) return ((parser.SimpLanPlusVisitor<? extends T>)visitor).visitGle(this);
+			if ( visitor instanceof SimpLanPlusVisitor ) return ((SimpLanPlusVisitor<? extends T>)visitor).visitGle(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -960,7 +958,7 @@ public class SimpLanPlusParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof parser.SimpLanPlusVisitor) return ((parser.SimpLanPlusVisitor<? extends T>)visitor).visitIntVal(this);
+			if ( visitor instanceof SimpLanPlusVisitor ) return ((SimpLanPlusVisitor<? extends T>)visitor).visitIntVal(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -982,7 +980,7 @@ public class SimpLanPlusParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof parser.SimpLanPlusVisitor) return ((parser.SimpLanPlusVisitor<? extends T>)visitor).visitNot(this);
+			if ( visitor instanceof SimpLanPlusVisitor ) return ((SimpLanPlusVisitor<? extends T>)visitor).visitNot(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1006,7 +1004,7 @@ public class SimpLanPlusParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof parser.SimpLanPlusVisitor) return ((parser.SimpLanPlusVisitor<? extends T>)visitor).visitFunExp2(this);
+			if ( visitor instanceof SimpLanPlusVisitor ) return ((SimpLanPlusVisitor<? extends T>)visitor).visitFunExp2(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1037,7 +1035,7 @@ public class SimpLanPlusParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof parser.SimpLanPlusVisitor) return ((parser.SimpLanPlusVisitor<? extends T>)visitor).visitIfExp(this);
+			if ( visitor instanceof SimpLanPlusVisitor ) return ((SimpLanPlusVisitor<? extends T>)visitor).visitIfExp(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1064,7 +1062,7 @@ public class SimpLanPlusParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof parser.SimpLanPlusVisitor) return ((parser.SimpLanPlusVisitor<? extends T>)visitor).visitPlussub(this);
+			if ( visitor instanceof SimpLanPlusVisitor ) return ((SimpLanPlusVisitor<? extends T>)visitor).visitPlussub(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1081,7 +1079,7 @@ public class SimpLanPlusParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof parser.SimpLanPlusVisitor) return ((parser.SimpLanPlusVisitor<? extends T>)visitor).visitBoolVal(this);
+			if ( visitor instanceof SimpLanPlusVisitor ) return ((SimpLanPlusVisitor<? extends T>)visitor).visitBoolVal(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1108,7 +1106,7 @@ public class SimpLanPlusParser extends Parser {
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof parser.SimpLanPlusVisitor) return ((SimpLanPlusVisitor<? extends T>)visitor).visitMuldiv(this);
+			if ( visitor instanceof SimpLanPlusVisitor ) return ((SimpLanPlusVisitor<? extends T>)visitor).visitMuldiv(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -1481,15 +1479,15 @@ public class SimpLanPlusParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\u0004\u0001 \u00cc\u0002\u0000\u0007\u0000\u0002\u0001\u0007\u0001\u0002"+
-		"\u0002\u0007\u0002\u0002\u0003\u0007\u0003\u0002\u0004\u0007\u0004\u0002"+
-		"\u0005\u0007\u0005\u0002\u0006\u0007\u0006\u0001\u0000\u0001\u0000\u0001"+
-		"\u0000\u0001\u0000\u0004\u0000\u0013\b\u0000\u000b\u0000\f\u0000\u0014"+
-		"\u0001\u0000\u0005\u0000\u0018\b\u0000\n\u0000\f\u0000\u001b\t\u0000\u0001"+
-		"\u0000\u0003\u0000\u001e\b\u0000\u0001\u0000\u0001\u0000\u0003\u0000\""+
-		"\b\u0000\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001"+
-		"\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0005\u0001.\b"+
-		"\u0001\n\u0001\f\u00011\t\u0001\u0003\u00013\b\u0001\u0001\u0001\u0001"+
+		"\u0004\u0001\u001f\u00cc\u0002\u0000\u0007\u0000\u0002\u0001\u0007\u0001"+
+		"\u0002\u0002\u0007\u0002\u0002\u0003\u0007\u0003\u0002\u0004\u0007\u0004"+
+		"\u0002\u0005\u0007\u0005\u0002\u0006\u0007\u0006\u0001\u0000\u0001\u0000"+
+		"\u0001\u0000\u0001\u0000\u0004\u0000\u0013\b\u0000\u000b\u0000\f\u0000"+
+		"\u0014\u0001\u0000\u0005\u0000\u0018\b\u0000\n\u0000\f\u0000\u001b\t\u0000"+
+		"\u0001\u0000\u0003\u0000\u001e\b\u0000\u0001\u0000\u0001\u0000\u0003\u0000"+
+		"\"\b\u0000\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001"+
+		"\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0005\u0001"+
+		".\b\u0001\n\u0001\f\u00011\t\u0001\u0003\u00013\b\u0001\u0001\u0001\u0001"+
 		"\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0003\u0001:\b\u0001\u0001"+
 		"\u0002\u0001\u0002\u0001\u0002\u0001\u0003\u0005\u0003@\b\u0003\n\u0003"+
 		"\f\u0003C\t\u0003\u0001\u0003\u0005\u0003F\b\u0003\n\u0003\f\u0003I\t"+

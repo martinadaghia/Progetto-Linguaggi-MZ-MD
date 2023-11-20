@@ -1,3 +1,5 @@
-Numero totale di errori: 1
+Numero totale di errori: 3
 * Analisi lessicale fallita
-ERRORE lessicale  alla linea 1, posizione 26: extraneous input 'b' expecting '}'
+ERRORE lessicale  alla linea 1, posizione 6: no viable alternative at input 'intpi='
+ERRORE lessicale  alla linea 1, posizione 8: token recognition error at: '.'
+ERRORE lessicale  alla linea 1, posizione 9: extraneous input '6' expecting ';'

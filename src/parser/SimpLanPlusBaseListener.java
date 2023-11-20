@@ -1,4 +1,4 @@
-// Generated from /Users/martinadaghia/Desktop/ProgettoLinguaggi/src/parser/SimpLanPlus.g4 by ANTLR 4.13.1
+// Generated from /Users/martinazauli/Desktop/ProgettoLinguaggi_MZ_MD/src/parser/SimpLanPlus.g4 by ANTLR 4.13.1
 package parser;
 
 import org.antlr.v4.runtime.ParserRuleContext;
@@ -6,7 +6,7 @@ import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.TerminalNode;
 
 /**
- * This class provides an empty implementation of {@link parser.SimpLanPlusListener},
+ * This class provides an empty implementation of {@link SimpLanPlusListener},
  * which can be extended to create a listener which only needs to handle a subset
  * of the available methods.
  */
@@ -17,247 +17,247 @@ public class SimpLanPlusBaseListener implements SimpLanPlusListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterSingleExp(parser.SimpLanPlusParser.SingleExpContext ctx) { }
+	@Override public void enterSingleExp(SimpLanPlusParser.SingleExpContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitSingleExp(parser.SimpLanPlusParser.SingleExpContext ctx) { }
+	@Override public void exitSingleExp(SimpLanPlusParser.SingleExpContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterMultiDec(parser.SimpLanPlusParser.MultiDecContext ctx) { }
+	@Override public void enterMultiDec(SimpLanPlusParser.MultiDecContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitMultiDec(parser.SimpLanPlusParser.MultiDecContext ctx) { }
+	@Override public void exitMultiDec(SimpLanPlusParser.MultiDecContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterVarDec(parser.SimpLanPlusParser.VarDecContext ctx) { }
+	@Override public void enterVarDec(SimpLanPlusParser.VarDecContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitVarDec(parser.SimpLanPlusParser.VarDecContext ctx) { }
+	@Override public void exitVarDec(SimpLanPlusParser.VarDecContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterFunDec(parser.SimpLanPlusParser.FunDecContext ctx) { }
+	@Override public void enterFunDec(SimpLanPlusParser.FunDecContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitFunDec(parser.SimpLanPlusParser.FunDecContext ctx) { }
+	@Override public void exitFunDec(SimpLanPlusParser.FunDecContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterPara(parser.SimpLanPlusParser.ParaContext ctx) { }
+	@Override public void enterPara(SimpLanPlusParser.ParaContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitPara(parser.SimpLanPlusParser.ParaContext ctx) { }
+	@Override public void exitPara(SimpLanPlusParser.ParaContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterBody1(parser.SimpLanPlusParser.Body1Context ctx) { }
+	@Override public void enterBody1(SimpLanPlusParser.Body1Context ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitBody1(parser.SimpLanPlusParser.Body1Context ctx) { }
+	@Override public void exitBody1(SimpLanPlusParser.Body1Context ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterType(parser.SimpLanPlusParser.TypeContext ctx) { }
+	@Override public void enterType(SimpLanPlusParser.TypeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitType(parser.SimpLanPlusParser.TypeContext ctx) { }
+	@Override public void exitType(SimpLanPlusParser.TypeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterAssignExp(parser.SimpLanPlusParser.AssignExpContext ctx) { }
+	@Override public void enterAssignExp(SimpLanPlusParser.AssignExpContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitAssignExp(parser.SimpLanPlusParser.AssignExpContext ctx) { }
+	@Override public void exitAssignExp(SimpLanPlusParser.AssignExpContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterFunExp(parser.SimpLanPlusParser.FunExpContext ctx) { }
+	@Override public void enterFunExp(SimpLanPlusParser.FunExpContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitFunExp(parser.SimpLanPlusParser.FunExpContext ctx) { }
+	@Override public void exitFunExp(SimpLanPlusParser.FunExpContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterIfStm(parser.SimpLanPlusParser.IfStmContext ctx) { }
+	@Override public void enterIfStm(SimpLanPlusParser.IfStmContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitIfStm(parser.SimpLanPlusParser.IfStmContext ctx) { }
+	@Override public void exitIfStm(SimpLanPlusParser.IfStmContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterBaseExp(parser.SimpLanPlusParser.BaseExpContext ctx) { }
+	@Override public void enterBaseExp(SimpLanPlusParser.BaseExpContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitBaseExp(parser.SimpLanPlusParser.BaseExpContext ctx) { }
+	@Override public void exitBaseExp(SimpLanPlusParser.BaseExpContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterAndor(parser.SimpLanPlusParser.AndorContext ctx) { }
+	@Override public void enterAndor(SimpLanPlusParser.AndorContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitAndor(parser.SimpLanPlusParser.AndorContext ctx) { }
+	@Override public void exitAndor(SimpLanPlusParser.AndorContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterVarExp(parser.SimpLanPlusParser.VarExpContext ctx) { }
+	@Override public void enterVarExp(SimpLanPlusParser.VarExpContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitVarExp(parser.SimpLanPlusParser.VarExpContext ctx) { }
+	@Override public void exitVarExp(SimpLanPlusParser.VarExpContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterGle(parser.SimpLanPlusParser.GleContext ctx) { }
+	@Override public void enterGle(SimpLanPlusParser.GleContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitGle(parser.SimpLanPlusParser.GleContext ctx) { }
+	@Override public void exitGle(SimpLanPlusParser.GleContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterIntVal(parser.SimpLanPlusParser.IntValContext ctx) { }
+	@Override public void enterIntVal(SimpLanPlusParser.IntValContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitIntVal(parser.SimpLanPlusParser.IntValContext ctx) { }
+	@Override public void exitIntVal(SimpLanPlusParser.IntValContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterNot(parser.SimpLanPlusParser.NotContext ctx) { }
+	@Override public void enterNot(SimpLanPlusParser.NotContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitNot(parser.SimpLanPlusParser.NotContext ctx) { }
+	@Override public void exitNot(SimpLanPlusParser.NotContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterFunExp2(parser.SimpLanPlusParser.FunExp2Context ctx) { }
+	@Override public void enterFunExp2(SimpLanPlusParser.FunExp2Context ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitFunExp2(parser.SimpLanPlusParser.FunExp2Context ctx) { }
+	@Override public void exitFunExp2(SimpLanPlusParser.FunExp2Context ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterIfExp(parser.SimpLanPlusParser.IfExpContext ctx) { }
+	@Override public void enterIfExp(SimpLanPlusParser.IfExpContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitIfExp(parser.SimpLanPlusParser.IfExpContext ctx) { }
+	@Override public void exitIfExp(SimpLanPlusParser.IfExpContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterPlussub(parser.SimpLanPlusParser.PlussubContext ctx) { }
+	@Override public void enterPlussub(SimpLanPlusParser.PlussubContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitPlussub(parser.SimpLanPlusParser.PlussubContext ctx) { }
+	@Override public void exitPlussub(SimpLanPlusParser.PlussubContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterBoolVal(parser.SimpLanPlusParser.BoolValContext ctx) { }
+	@Override public void enterBoolVal(SimpLanPlusParser.BoolValContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitBoolVal(parser.SimpLanPlusParser.BoolValContext ctx) { }
+	@Override public void exitBoolVal(SimpLanPlusParser.BoolValContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterMuldiv(parser.SimpLanPlusParser.MuldivContext ctx) { }
+	@Override public void enterMuldiv(SimpLanPlusParser.MuldivContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

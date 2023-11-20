@@ -19,8 +19,11 @@ public class ExecuteVM {
     private int t1;					// temporary register
     private int t2;					// additional temporary register, just in case
 
-    public ExecuteVM(AssemblyClass[] _code) {
+    private boolean codeIsVoid;
+
+    public ExecuteVM(AssemblyClass[] _code, boolean isVoid) {
         code = _code ;
+        codeIsVoid = isVoid;
     }
 
 
@@ -209,7 +212,11 @@ public class ExecuteVM {
                     ip = read(bytecode.getArg1()) ;
                     break;
                 case SVMParser.HALT : //to print the result
-                    System.out.println("\nResult: " + a0 + "\n");
+                    String res;
+                    if (codeIsVoid)
+                        System.out.println("\nProgram is of type Void, value in A0: "+ a0 + "\n");
+                    else
+                        System.out.println("\nResult: " + a0 + "\n");
                     return;
             }
         }

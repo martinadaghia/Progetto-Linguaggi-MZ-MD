@@ -19,6 +19,7 @@ public class ErrorListener extends BaseErrorListener {
 
     @Override
     public void syntaxError(Recognizer<?, ?> recognizer, Object offendingSymbol, int line, int charPositionInLine, String msg, RecognitionException e) {
+        System.out.println("FOUND ERROR");
         Errors.add(" alla linea " + line + ", posizione " + charPositionInLine + ": " + msg);
         super.syntaxError(recognizer, offendingSymbol, line, charPositionInLine, msg, e);
     }
@@ -36,5 +37,9 @@ public class ErrorListener extends BaseErrorListener {
     @Override
     public void reportContextSensitivity(Parser recognizer, DFA dfa, int startIndex, int stopIndex, int prediction, ATNConfigSet configs) {
         super.reportContextSensitivity(recognizer, dfa, startIndex, stopIndex, prediction, configs);
+    }
+
+    public int getErrorsCount() {
+        return Errors.size();
     }
 }
