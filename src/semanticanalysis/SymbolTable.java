@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class SymbolTable {
-    private ArrayList<HashMap<String,STentry>>  symbol_table ; //Ogni elemento dell'ArrayList corrisponde a uno scope (ambiente) e contiene una mappa che associa gli identificatori alle relative STentry (voci nella tabella dei simboli).
+    private ArrayList<HashMap<String,STentry>>  symbol_table ; // elemento = uno scope (ambiente) e contiene una mappa che associa gli identificatori alle relative STentry (voci nella tabella dei simboli).
     private ArrayList<Integer> offset; //offset = posizione dell'id nella memoria
 
     public SymbolTable() {
@@ -54,7 +54,7 @@ public class SymbolTable {
         return n ; //torna il livello in cui viene trovato l'id. se l'id non viene trovato restituisce -1
     }
 
-    /* aggiunge elementi nella tabella */
+    /* aggiunge un nuovo ambiente alla tabella */
     public void add(HashMap<String,STentry> H) { //parametro che rappresenta un nuovo ambiente da aggiungere alla tabella
         symbol_table.add(H) ; //aggiunto alla tabellla
         offset.add(1) ;	// si inizia da 2 perche` prima ci sono FP e AL
