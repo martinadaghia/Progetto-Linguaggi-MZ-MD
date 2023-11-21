@@ -5,7 +5,7 @@ import semanticanalysis.SymbolTable;
 
 import java.util.ArrayList;
 
-public class ParamNode implements Node { //è uguale a parNode del prof ecc
+public class ParamNode implements Node {
 
     private String id;
     private Type type;
@@ -30,12 +30,10 @@ public class ParamNode implements Node { //è uguale a parNode del prof ecc
         return new ArrayList<SemanticError>();
     }
 
-    //non utilizzato
     public Type typeCheck () {
         return null;
     }
 
-    //non utilizzato
     public String codeGeneration() {
         return "//start ParamNode\n" + "" + "//end ParamNode\n" ;
     }

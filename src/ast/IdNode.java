@@ -22,38 +22,23 @@ public class IdNode implements Node {
         if (st_type == null) {
             errors.add(new SemanticError("Id " + id + " not declared"));
         } else {
-            // Se è dichiarata nello scope corrente ma non è inizializzata ritorno errore, ma se il nesting della x è <= del nesting corrente non dare problemi
-            //if(ST.top_lookup(id) && !st_type.getInitialized() && ST.lookup(id).getnesting() > nesting ) {
-            //            errors.add(new SemanticError("Var " + id + " has not been initialized"));
-            // Se è dichiarata nello scope corrente ma non è inizializzata
+            // Se è dichiarata nello scope corrente ma non è inizializzata ritono errore
             if (ST.top_lookup(id) && !st_type.getInitialized()) {
+
+                // Verifica che la variabile sia dichiarata nell'ambiente corrente
                 if (ST.lookup(id).getnesting() == nesting) {
+                    // Aggiungi un errore se la variabile non è stata inizializzata
                     errors.add(new SemanticError("Var " + id + " has not been initialized"));
                 }
 
-            }
             // Se è dichiarata in un altro scope e non è ancora stata inizializzata -> warning
-            else if(!ST.top_lookup(id) && !st_type.getInitialized()) {
+            } else if(!ST.top_lookup(id) && !st_type.getInitialized()) {
                 System.out.println("WARNING: var " + id + " (nestlvl: " + st_type.getnesting() + ") might not be initialised");
             }
             type = st_type ;
         }
         return errors;
     }
-/*
-    public ArrayList<SemanticError> checkSemantics(SymbolTable ST, int _nesting) {
-        ArrayList<SemanticError> errors = new ArrayList<SemanticError>();
-        nesting = _nesting ;
-
-        STentry st_type = ST.lookup(id) ;
-        if (st_type == null)
-            errors.add(new SemanticError("Id " + id + " not declared"));
-        else type = st_type ;
-
-        return errors;
-    }
-    */
-
 
     public Type typeCheck () {
         if (type.gettype() instanceof ArrowType) { //

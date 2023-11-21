@@ -1,3 +1,3 @@
 Numero totale di errori: 1
 * Analisi lessicale fallita
-ERRORE lessicale  alla linea 3, posizione 22: token recognition error at: '.'
+ERRORE lessicale  alla linea 6, posizione 13: token recognition error at: '−'

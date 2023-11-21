@@ -17,7 +17,7 @@ import semanticanalysis.SymbolTable;
 import parser.SVMLexer;
 import parser.SVMParser;
 
-public class Test {
+public class Main {
     public static void main(String[] args) throws Exception {
 
         String fileName = "prova.simplan";
