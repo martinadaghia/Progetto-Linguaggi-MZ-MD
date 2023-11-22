@@ -38,7 +38,7 @@ public class Main {
         SimpLanPlusVisitorImpl visitor = new SimpLanPlusVisitorImpl();
 
         parser.removeErrorListeners();
-        //parser.addErrorListener(errorListener);
+        parser.addErrorListener(errorListener);
 
         Node ast = visitor.visit(parser.prog()); //generazione AST
 

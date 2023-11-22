@@ -29,12 +29,16 @@ public class IdNode implements Node {
                 if (ST.lookup(id).getnesting() == nesting) {
                     // Aggiungi un errore se la variabile non è stata inizializzata
                     errors.add(new SemanticError("Var " + id + " has not been initialized"));
+                } else {
+                    // Verifica che la variabile sia dichiarata in un'altro scope ed è sempre non inizializzata
+                    System.out.println("WARNING: var " + id + " (nestlvl: " + st_type.getnesting() + ") might not be initialised");
                 }
-
-            // Se è dichiarata in un altro scope e non è ancora stata inizializzata -> warning
-            } else if(!ST.top_lookup(id) && !st_type.getInitialized()) {
-                System.out.println("WARNING: var " + id + " (nestlvl: " + st_type.getnesting() + ") might not be initialised");
             }
+            /*Se è dichiarata in un altro scope e non è ancora stata inizializzata -> warning
+            } else if(!ST.top_lookup(id) && !st_type.getInitialized()) {
+
+                System.out.println("WARNING: var " + id + " (nestlvl: " + st_type.getnesting() + ") might not be initialised");
+            }*/
             type = st_type ;
         }
         return errors;

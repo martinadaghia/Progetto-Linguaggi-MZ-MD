@@ -23,10 +23,10 @@ public class NotNode implements Node {
 
     @Override
     public Type typeCheck() {
-        if (right.typeCheck() instanceof IntType)
+        if (right.typeCheck() instanceof BoolType) {
             return new BoolType();
-        else {
-            System.out.println("Type Error: Non integers not to comparison");
+        } else {
+            System.out.println("Type Error: Non bool in not exp");
             return new ErrorType();
         }
     }
@@ -37,12 +37,12 @@ public class NotNode implements Node {
 
         return "//start NotNode\n"
                 + right.codeGeneration()
-                + "store T1 1 \n"
+                + "storei T1 1 \n"
                 + "beq A0 T1 " + labelTrue + "\n"
-                + "store A0 0 \n"
+                + "storei A0 1 \n"
                 + "b " + labelEnd + "\n"
                 + labelTrue + ": \n"
-                + "store A0 1 \n"
+                + "storei A0 0 \n"
                 + labelEnd + ": \n"
                 + "//end NotNode\n";
     }
