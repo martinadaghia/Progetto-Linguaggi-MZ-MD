@@ -39,17 +39,20 @@ public class LessNode implements Node {
     public String codeGeneration() {
         String labelTrue = SimpLanlib.freshLabel();
         String labelEnd = SimpLanlib.freshLabel();
+        String labelEq = SimpLanlib.freshLabel();
 
         return "//start LessNode\n" +
                 left.codeGeneration() +
                 "pushr A0 \n" +
                 right.codeGeneration() +
                 "popr T1 \n" +
-                "blt T1 A0 " + labelTrue + " \n" + //branch on less than T1 < A0
-                "push 0 \n" +
+                "bleq T1 A0 " + labelTrue + " \n" + //bleq perchè bl si rompe
+                labelEq + ": \n" +
+                "storei A0 0 \n" +
                 "b " + labelEnd + " \n" +
                 labelTrue + ": \n" +
-                "push 1 \n" +
+                "beq T1 A0 " + labelEq + " \n" +
+                "storei A0 1 \n" +
                 labelEnd + ": \n" +
                 "//end LessNode\n";
     }

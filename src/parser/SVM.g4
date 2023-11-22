@@ -63,12 +63,12 @@ PUSHR	 : 'pushr'	;
 POP	 	 : 'pop' 	;
 POPR	 : 'popr' 	;
 BRANCH 	 : 'b' 		;
-BRANCHEQ :'beq' 	;
-BRANCHLESSEQ:'bleq' ;
+BRANCHEQ :'beq' 	; //==
+BRANCHLESSEQ:'bleq' ; //<=
 JUMPSUB	 : 'jsub' 	;
 RETURNSUB: 'rsub'	;
-BGTE     : 'bgte'   ;
-BL       : 'bl'     ;
+BGTE     : 'bgte'   ; //>=
+BL       : 'bl'     ; //< che si rompe
 HALT	 : 'halt' ;
 
 REG 	 : 'A0' | 'RA' | 'FP' | 'SP' | 'AL' | 'T1' | 'T2' ;

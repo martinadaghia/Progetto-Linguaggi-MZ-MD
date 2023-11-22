@@ -39,19 +39,24 @@ public class GreatEqualNode implements Node {
     public String codeGeneration() {
         String labelTrue = SimpLanlib.freshLabel();
         String labelEnd = SimpLanlib.freshLabel();
+        String labelEq = SimpLanlib.freshLabel();
 
-        return "//start GreatEqualNode\n" +
+
+        return "//start GreatNode\n" +
                 left.codeGeneration() +
                 "pushr A0 \n" +
                 right.codeGeneration() +
                 "popr T1 \n" +
-                "bge T1 A0 " + labelTrue + " \n" + //branch if greater than or equal to
-                "push 0 \n" +
+                "bleq T1 A0 " + labelTrue + " \n" +
+                labelEq + ": \n" +
+                "storei A0 1 \n" +
                 "b " + labelEnd + " \n" +
                 labelTrue + ": \n" +
-                "push 1 \n" +
+                "beq T1 A0 " + labelEq + " \n" +
+                "storei A0 0 \n" +
                 labelEnd + ": \n" +
-                "//end GreatEqualNode\n";
+                "//end GreatNode\n";
+
     }
 
     @Override

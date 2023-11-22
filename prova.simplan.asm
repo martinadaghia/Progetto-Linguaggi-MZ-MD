@@ -1,19 +1,21 @@
 //start ProgNode
-//start LessNode
+//start GreatNode
 //start IntNode
 storei A0 5
 //end IntNode
 pushr A0 
 //start IntNode
-storei A0 3
+storei A0 7
 //end IntNode
 popr T1 
-blt T1 A0 label0 
-push 0 
+bleq T1 A0 label0 
+label2: 
+storei A0 1 
 b label1 
 label0: 
-push 1 
+beq T1 A0 label2 
+storei A0 0 
 label1: 
-//end LessNode
+//end GreatNode
 halt
 //end ProgNode
