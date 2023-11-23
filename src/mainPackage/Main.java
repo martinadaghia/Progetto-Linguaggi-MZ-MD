@@ -46,42 +46,49 @@ public class Main {
         int numErrors = errorsList.size();
 
         //CONTROLLO ERRORI LESSICALI NO SINTATTICI
+
         if (numErrors > 0){
             System.out.println("The program was not in the right format. Exiting the compilation process now");
-            System.out.println("** Analisi lessicale fallita **");
+            System.out.println(" ** Analisi lessicale fallita ** ");
             try {
                 PrintWriter writer = new PrintWriter("errorilessicali.txt", "UTF-8");
                 writer.write("Numero totale di errori: " + numErrors + "\n");
-                writer.println("* Analisi lessicale fallita");
+                writer.println(" ** Analisi lessicale fallita ** ");
 
                 for (String error : errorsList) {
                     writer.println("ERRORE lessicale " + error);
-                    System.out.println("Errore lessicale " + error);
+                    System.out.println("ERRORE lessicale " + error);
                 }
                 writer.close();
                 System.out.println("\n" + "Gli errori e il numero totale di errori sono stati scritti su errorilessicali.txt");
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            //chiudi il programma alla fine
-            System.exit(1);
+
+            System.exit(1); //chiudi il programma alla fine
         } else {
             //ERRORI SEMANTICI
             SymbolTable ST = new SymbolTable();
             ArrayList<SemanticError> errors = ast.checkSemantics(ST, 0);
             if(errors.size()>0){
+                System.out.println(" ** Analisi semantica fallita! ** ");
                 System.out.println("You had: " + errors.size() + " errors:");
                 for(SemanticError e : errors)
                     System.out.println("\t" + e);
+
             } else {
+                System.out.println(" ** Analisi semantica OK! **");
+
                 System.out.println("Visualizing AST...");
                 System.out.println(ast.toPrint(""));
 
                 Node type = ast.typeCheck(); //type-checking bottom-up
-                if (type instanceof ErrorType)
-                    System.out.println("Type checking is WRONG!");
-                else
-                    System.out.println(type.toPrint("Type checking ok! Type of the program is: "));
+                if (type instanceof ErrorType) {
+                    System.out.println(" ** Type checking is WRONG! **");
+                } else {
+                    System.out.println(" ** Type checking OK! ** ");
+                    System.out.println(type.toPrint("Type of the program is: "));
+                }
 
                 // CODE GENERATION  prova.SimpLan.asm
                 String code=ast.codeGeneration();
@@ -95,8 +102,6 @@ public class Main {
                 SVMLexer lexerASM = new SVMLexer(inputASM);
                 CommonTokenStream tokensASM = new CommonTokenStream(lexerASM);
                 SVMParser parserASM = new SVMParser(tokensASM);
-
-                //parserASM.assembly();
 
                 SVMVisitorImpl visitorSVM = new SVMVisitorImpl();
                 visitorSVM.visit(parserASM.assembly());

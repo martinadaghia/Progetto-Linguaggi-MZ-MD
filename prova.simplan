@@ -1,4 +1,4 @@
-
+/*
 int x;
 int y;
 int sum (int n, int tot){
@@ -7,11 +7,14 @@ int sum (int n, int tot){
     }
     sum(n-1, tot+n);
 }
-/*
+
 x=0;
 sum(10, 0);
 x
-*/
+
 void sum(){
 
 }
+*/
+
+g(3)
