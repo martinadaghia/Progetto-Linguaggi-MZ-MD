@@ -1,4 +1,5 @@
 package mainPackage;
+
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -29,7 +30,7 @@ public class Main {
         SimpLanPlusParser parser = new SimpLanPlusParser(tokens);
 
 
-        ArrayList <String> errorsList = new ArrayList<>();
+        ArrayList<String> errorsList = new ArrayList<>();
         ErrorListener errorListener = new ErrorListener(errorsList);
 
         lexer.removeErrorListeners();
@@ -47,7 +48,7 @@ public class Main {
 
         //CONTROLLO ERRORI LESSICALI NO SINTATTICI
 
-        if (numErrors > 0){
+        if (numErrors > 0) {
             System.out.println("The program was not in the right format. Exiting the compilation process now");
             System.out.println(" ** Analisi lessicale fallita ** ");
             try {
@@ -70,10 +71,10 @@ public class Main {
             //ERRORI SEMANTICI
             SymbolTable ST = new SymbolTable();
             ArrayList<SemanticError> errors = ast.checkSemantics(ST, 0);
-            if(errors.size()>0){
+            if (errors.size() > 0) {
                 System.out.println(" ** Analisi semantica fallita! ** ");
                 System.out.println("You had: " + errors.size() + " errors:");
-                for(SemanticError e : errors)
+                for (SemanticError e : errors)
                     System.out.println("\t" + e);
 
             } else {
@@ -91,13 +92,13 @@ public class Main {
                 }
 
                 // CODE GENERATION  prova.SimpLan.asm
-                String code=ast.codeGeneration();
-                BufferedWriter out = new BufferedWriter(new FileWriter(fileName+".asm"));
+                String code = ast.codeGeneration();
+                BufferedWriter out = new BufferedWriter(new FileWriter(fileName + ".asm"));
                 out.write(code);
                 out.close();
                 System.out.println("Code generated! Assembling and running generated code.");
 
-                FileInputStream isASM = new FileInputStream(fileName+".asm");
+                FileInputStream isASM = new FileInputStream(fileName + ".asm");
                 ANTLRInputStream inputASM = new ANTLRInputStream(isASM);
                 SVMLexer lexerASM = new SVMLexer(inputASM);
                 CommonTokenStream tokensASM = new CommonTokenStream(lexerASM);

@@ -6,24 +6,24 @@ public class ArrowType extends Type {
     private ArrayList<Type> inputtype;
     private Type outputtype;
 
-    public ArrowType(ArrayList<Type> inputtype , Type outputtype) {
-        this.inputtype = inputtype ;
+    public ArrowType(ArrayList<Type> inputtype, Type outputtype) {
+        this.inputtype = inputtype;
         this.outputtype = outputtype;
     }
 
-    public Type get_outputtype () { //
+    public Type get_outputtype() { //
         return outputtype;
     }
 
     public ArrayList<Type> get_inputtype() { //
-        return inputtype ;
+        return inputtype;
     }
 
     public String toPrint(String s) {
-        String tmp = "" ;
+        String tmp = "";
         for (Type t : inputtype)
-            tmp = tmp + t.toPrint("") + " " ;
-        tmp = tmp + "-> "+ outputtype.toPrint("") ;
-        return s + "Function Type: " + tmp +  "\n" ;
+            tmp = tmp + t.toPrint("") + " ";
+        tmp = tmp + "-> " + outputtype.toPrint("");
+        return s + "Function Type: " + tmp + "\n";
     }
 }

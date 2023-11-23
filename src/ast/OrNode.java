@@ -46,11 +46,11 @@ public class OrNode implements Node {
                 "beq A0 T1 \n" + "b " + labelEnd + "\n" + //se è uguale esco
                 //se è diverso valuto dx
                 right.codeGeneration() +
-                "beq A0 T1 \n" + "b " + labelEnd +  "\n" +
-                "storei A0 0 \n" + "b " + labelFalse +  "\n" +
+                "beq A0 T1 \n" + "b " + labelEnd + "\n" +
+                "storei A0 0 \n" + "b " + labelFalse + "\n" +
                 labelEnd + ": \n" +
                 "storei A0 1 \n" +
-                labelFalse +  ": \n" +
+                labelFalse + ": \n" +
                 "//end OrNode\n";
     }
 

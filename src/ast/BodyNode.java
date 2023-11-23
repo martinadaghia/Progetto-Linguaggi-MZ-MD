@@ -9,7 +9,7 @@ public class BodyNode implements Node {
     private ArrayList<Node> declarations;
     private ArrayList<Node> statements;
     private Node expression;
-    private int nesting ;
+    private int nesting;
 
     public BodyNode(ArrayList<Node> declarations, ArrayList<Node> statements, Node expression) {
         this.declarations = declarations;
@@ -71,13 +71,13 @@ public class BodyNode implements Node {
         String valutoexp = "";
 
         if (declarations != null) {
-            for(Node decc: declarations) {
+            for (Node decc : declarations) {
                 valutodec += decc.codeGeneration();
             }
         }
 
         if (statements != null) {
-            for(Node stmm: statements) {
+            for (Node stmm : statements) {
                 valutostm += stmm.codeGeneration();
             }
         }
@@ -87,7 +87,7 @@ public class BodyNode implements Node {
         }
 
 
-        return  "//start BodyNode\n" +  valutodec
+        return "//start BodyNode\n" + valutodec
                 + valutostm
                 + valutoexp
                 + "addi SP " + declarations.size() + "\n"
@@ -103,22 +103,22 @@ public class BodyNode implements Node {
         String expstring = "";
 
         if (declarations != null) {
-            for(Node decS: declarations) {
-                decstring += decS.toPrint(s+"  ");
+            for (Node decS : declarations) {
+                decstring += decS.toPrint(s + "  ");
             }
         }
 
         if (statements != null) {
-            for(Node stmS: statements) {
-                stmstring += stmS.toPrint(s+"  ");
+            for (Node stmS : statements) {
+                stmstring += stmS.toPrint(s + "  ");
             }
         }
 
         if (expression != null) {
-            expstring += expression.toPrint(s+"  ");
+            expstring += expression.toPrint(s + "  ");
         }
 
 
-        return s+"Body\n" + decstring + stmstring + expstring;
+        return s + "Body\n" + decstring + stmstring + expstring;
     }
 }

@@ -7,7 +7,8 @@ import java.util.ArrayList;
 
 public class VoidNode implements Node {
 
-    public VoidNode () {    }
+    public VoidNode() {
+    }
 
     public ArrayList<SemanticError> checkSemantics(SymbolTable ST, int _nesting) {
         return new ArrayList<SemanticError>();

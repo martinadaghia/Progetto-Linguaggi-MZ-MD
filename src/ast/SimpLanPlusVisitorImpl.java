@@ -1,4 +1,5 @@
 package ast;
+
 import org.antlr.v4.runtime.Token;
 import parser.SimpLanPlusBaseVisitor;
 import parser.SimpLanPlusParser;
@@ -27,7 +28,7 @@ public class SimpLanPlusVisitorImpl extends SimpLanPlusBaseVisitor<Node> {
         }
 
         // Visita l'espressione se presente e aggiunge le istruzioni
-        if(ctx.stm() != null) {
+        if (ctx.stm() != null) {
             for (SimpLanPlusParser.StmContext st : ctx.stm()) {
                 statements.add(visit(st));
             }
@@ -87,54 +88,53 @@ public class SimpLanPlusVisitorImpl extends SimpLanPlusBaseVisitor<Node> {
         }
 
         // Visita l'espressione se presente
-        if(ctx.exp() != null){
+        if (ctx.exp() != null) {
             Node exp = visit(ctx.exp());
             return new BodyNode(declarations, statements, exp);
         }
         return new BodyNode(declarations, statements, null);
     }
 
-    //come il prof
     @Override
     public Node visitType(SimpLanPlusParser.TypeContext ctx) {
-        if(ctx.getText().equals("int")) {
+        if (ctx.getText().equals("int")) {
             return new IntType();
-        } else if(ctx.getText().equals("bool")) {
+        } else if (ctx.getText().equals("bool")) {
             return new BoolType();
         } else return new VoidType();
     }
 
     @Override
     public Node visitAssignExp(SimpLanPlusParser.AssignExpContext ctx) {
-        return new AssNode(ctx.ID().getText(), visit(ctx.exp()) );
+        return new AssNode(ctx.ID().getText(), visit(ctx.exp()));
     }
 
     @Override
     public Node visitFunExp(SimpLanPlusParser.FunExpContext ctx) {
-        ArrayList<Node> _param = new ArrayList<Node>() ;
+        ArrayList<Node> _param = new ArrayList<Node>();
 
-        for (SimpLanPlusParser.ExpContext vc : ctx.exp()){
+        for (SimpLanPlusParser.ExpContext vc : ctx.exp()) {
             _param.add(visit(vc));
         }
 
-        return new CallFunNode(ctx.ID().getText(),_param);
+        return new CallFunNode(ctx.ID().getText(), _param);
     }
 
     @Override
     public Node visitIfStm(SimpLanPlusParser.IfStmContext ctx) {
-        Node condExp = visit (ctx.cond);
+        Node condExp = visit(ctx.cond);
 
         ArrayList<Node> thenStms = new ArrayList<Node>();
         ArrayList<Node> elseStms = new ArrayList<Node>();
 
         boolean elseBranch = false;
-        for(org.antlr.v4.runtime.tree.ParseTree i : ctx.children) {
-            if(i.getText().equals("else"))
+        for (org.antlr.v4.runtime.tree.ParseTree i : ctx.children) {
+            if (i.getText().equals("else"))
                 elseBranch = true;
-            if(i.getClass().equals(parser.SimpLanPlusParser.AssignExpContext.class) ||
+            if (i.getClass().equals(parser.SimpLanPlusParser.AssignExpContext.class) ||
                     i.getClass().equals(SimpLanPlusParser.IfStmContext.class) ||
                     i.getClass().equals(SimpLanPlusParser.FunExpContext.class)) {
-                if(!elseBranch)
+                if (!elseBranch)
                     thenStms.add(visit(i));
                 else
                     elseStms.add(visit(i));
@@ -146,7 +146,7 @@ public class SimpLanPlusVisitorImpl extends SimpLanPlusBaseVisitor<Node> {
     @Override
     public Node visitIfExp(SimpLanPlusParser.IfExpContext ctx) {
 
-        Node condExp = visit (ctx.cond);
+        Node condExp = visit(ctx.cond);
 
         ArrayList<Node> thenStms = new ArrayList<Node>();
         ArrayList<Node> elseStms = new ArrayList<Node>();
@@ -154,17 +154,17 @@ public class SimpLanPlusVisitorImpl extends SimpLanPlusBaseVisitor<Node> {
         Node elseExp = null;
 
         boolean elseBranch = false;
-        for(org.antlr.v4.runtime.tree.ParseTree i : ctx.children) {
-            if(i.getText().equals("else"))
+        for (org.antlr.v4.runtime.tree.ParseTree i : ctx.children) {
+            if (i.getText().equals("else"))
                 elseBranch = true;
-            if(i.getClass().equals(parser.SimpLanPlusParser.AssignExpContext.class) ||
+            if (i.getClass().equals(parser.SimpLanPlusParser.AssignExpContext.class) ||
                     i.getClass().equals(SimpLanPlusParser.IfStmContext.class) ||
                     i.getClass().equals(SimpLanPlusParser.FunExpContext.class)) {
-                if(!elseBranch)
+                if (!elseBranch)
                     thenStms.add(visit(i));
                 else
                     elseStms.add(visit(i));
-            }else if(i.getClass().equals(SimpLanPlusParser.ExpContext.class) ||
+            } else if (i.getClass().equals(SimpLanPlusParser.ExpContext.class) ||
                     i.getClass().equals(SimpLanPlusParser.GleContext.class) ||
                     i.getClass().equals(SimpLanPlusParser.MuldivContext.class) ||
                     i.getClass().equals(SimpLanPlusParser.PlussubContext.class) ||
@@ -177,8 +177,8 @@ public class SimpLanPlusVisitorImpl extends SimpLanPlusBaseVisitor<Node> {
                     i.getClass().equals(SimpLanPlusParser.IntValContext.class) ||
                     i.getClass().equals(SimpLanPlusParser.BoolValContext.class) ||
                     i.getClass().equals(SimpLanPlusParser.FunExp2Context.class)
-            ){
-                if(!elseBranch)
+            ) {
+                if (!elseBranch)
                     thenExp = (visit(i));
                 else
                     elseExp = (visit(i));
@@ -186,7 +186,7 @@ public class SimpLanPlusVisitorImpl extends SimpLanPlusBaseVisitor<Node> {
 
         }
 
-        return  new IfExpNode(condExp,thenStms,thenExp,elseStms,elseExp);
+        return new IfExpNode(condExp, thenStms, thenExp, elseStms, elseExp);
 
     }
 
@@ -238,6 +238,7 @@ public class SimpLanPlusVisitorImpl extends SimpLanPlusBaseVisitor<Node> {
             return new ErrorType();
         }
     }
+
     @Override
     public Node visitIntVal(SimpLanPlusParser.IntValContext ctx) {
         // notice that this method is not actually a rule but a named production #intVal
@@ -250,6 +251,7 @@ public class SimpLanPlusVisitorImpl extends SimpLanPlusBaseVisitor<Node> {
         // Crea un nodo NotNode per rappresentare l'operazione di negazione
         return new NotNode(visit(ctx.right));
     }
+
     @Override
     public Node visitFunExp2(SimpLanPlusParser.FunExp2Context ctx) {
         //this corresponds to a function invocation
@@ -263,7 +265,7 @@ public class SimpLanPlusVisitorImpl extends SimpLanPlusBaseVisitor<Node> {
             args.add(visit(exp));
 
         // this is ad-hoc for this project...
-        if(ctx.ID().getText().equals("print"))
+        if (ctx.ID().getText().equals("print"))
             res = new PrintNode(args.get(0));
 
         else
@@ -284,6 +286,7 @@ public class SimpLanPlusVisitorImpl extends SimpLanPlusBaseVisitor<Node> {
             return null;
         }
     }
+
     @Override
     public Node visitBoolVal(SimpLanPlusParser.BoolValContext ctx) {
         //there is no need to perform a check here, the lexer ensures this text is a boolean

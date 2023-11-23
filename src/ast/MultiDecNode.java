@@ -10,19 +10,19 @@ import java.util.HashMap;
 
 public class MultiDecNode implements Node {
 
-    private ArrayList<Node> dec ;
-    private ArrayList<Node> stm ;
-    private Node exp ;
-    private int nesting ;
+    private ArrayList<Node> dec;
+    private ArrayList<Node> stm;
+    private Node exp;
+    private int nesting;
 
-    public MultiDecNode (ArrayList<Node> dec, ArrayList<Node> stm, Node exp) {
-        this.dec = dec ;
-        this.stm = stm ;
-        this.exp = exp ;
+    public MultiDecNode(ArrayList<Node> dec, ArrayList<Node> stm, Node exp) {
+        this.dec = dec;
+        this.stm = stm;
+        this.exp = exp;
     }
 
     public ArrayList<SemanticError> checkSemantics(SymbolTable ST, int _nesting) {
-        nesting = _nesting + 1 ;
+        nesting = _nesting + 1;
         HashMap<String, STentry> H = new HashMap<String, STentry>();
         ST.add(H);
 
@@ -30,14 +30,14 @@ public class MultiDecNode implements Node {
         ArrayList<SemanticError> errors = new ArrayList<SemanticError>();
 
         for (Node d : dec) {
-            errors.addAll(d.checkSemantics(ST, nesting)) ;
+            errors.addAll(d.checkSemantics(ST, nesting));
         }
 
         for (Node s : stm) {
-            errors.addAll(s.checkSemantics(ST, nesting)) ;
+            errors.addAll(s.checkSemantics(ST, nesting));
         }
 
-        if(exp != null)
+        if (exp != null)
             errors.addAll(exp.checkSemantics(ST, nesting));
 
         //clean the scope, we are leaving a let scope
@@ -47,21 +47,21 @@ public class MultiDecNode implements Node {
         return errors;
     }
 
-    public Type typeCheck () {
+    public Type typeCheck() {
         // Controlliamo che le dichiarazioni non abbiano errori
-        for (Node d: dec) {
+        for (Node d : dec) {
             if (d.typeCheck() instanceof ErrorType)
                 return new ErrorType();
         }
         // Controlliamo che gli statement non abbiano errori
-        if(stm != null) {
-            for (Node s: stm) {
+        if (stm != null) {
+            for (Node s : stm) {
                 if (s.typeCheck() instanceof ErrorType)
                     return new ErrorType();
             }
         }
         // Controlliamo che l'espressione non abbia errori
-        if(exp != null)
+        if (exp != null)
             return exp.typeCheck();
         // Se non c'e' un'espressione e non ci sono errori ritorniamo Void
         return new VoidType();
@@ -69,16 +69,16 @@ public class MultiDecNode implements Node {
 
     public String codeGeneration() {
         String expCode = "";
-        if(exp != null)
+        if (exp != null)
             expCode = exp.codeGeneration();
-        String declCode="";
-        String stmCode="";
-        for (Node d: dec)
+        String declCode = "";
+        String stmCode = "";
+        for (Node d : dec)
             declCode += d.codeGeneration();
-        for (Node s: stm)
+        for (Node s : stm)
             stmCode += s.codeGeneration();
 
-        return  "//start MultiDecNode\n"
+        return "//start MultiDecNode\n"
                 + "move SP FP  \n"
                 + "pushr FP \n"
                 + "move SP AL \n"
@@ -95,13 +95,13 @@ public class MultiDecNode implements Node {
         String statementstr = "";
         String declstr = "";
         for (Node d : dec)
-            declstr += d.toPrint(s+"\t");
+            declstr += d.toPrint(s + "\t");
         for (Node st : stm)
-            statementstr += st.toPrint(s+"\t");
+            statementstr += st.toPrint(s + "\t");
         if (exp != null)
-            return s+"ProgDecStm \n" + declstr + statementstr + "\n" + exp.toPrint(s+"\t") ;
+            return s + "ProgDecStm \n" + declstr + statementstr + "\n" + exp.toPrint(s + "\t");
 
-        return s+"ProgDecStm \n" + declstr + statementstr + "\n";
+        return s + "ProgDecStm \n" + declstr + statementstr + "\n";
     }
 
 }

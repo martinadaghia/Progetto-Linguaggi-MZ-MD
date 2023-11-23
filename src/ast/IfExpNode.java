@@ -36,8 +36,8 @@ public class IfExpNode implements Node {
         SymbolTable thenST = new SymbolTable();
         SymbolTable elseST = new SymbolTable();
 
-        if(!thenStms.isEmpty()) {
-            for (Node then: thenStms) {
+        if (!thenStms.isEmpty()) {
+            for (Node then : thenStms) {
                 errors.addAll(then.checkSemantics(ST, _nesting));
             }
         }
@@ -48,8 +48,8 @@ public class IfExpNode implements Node {
 
         ST.restore(oldST.getSymbol_table(), oldST.getOffset());
 
-        if(!elseStms.isEmpty()) {
-            for (Node i: elseStms) {
+        if (!elseStms.isEmpty()) {
+            for (Node i : elseStms) {
                 errors.addAll(i.checkSemantics(ST, _nesting));
             }
         }
@@ -69,30 +69,30 @@ public class IfExpNode implements Node {
     public Type typeCheck() {
         if (guard.typeCheck() instanceof BoolType) {
 
-            for (Node a: thenStms) {
-                if(a.typeCheck() instanceof ErrorType){
+            for (Node a : thenStms) {
+                if (a.typeCheck() instanceof ErrorType) {
                     return new ErrorType();
                 }
             }
 
-            for (Node b: elseStms) {
-                if(b.typeCheck() instanceof ErrorType){
+            for (Node b : elseStms) {
+                if (b.typeCheck() instanceof ErrorType) {
                     return new ErrorType();
                 }
             }
 
-            Type thenType = thenExp.typeCheck() ;
-            Type elseType = elseExp.typeCheck() ;
+            Type thenType = thenExp.typeCheck();
+            Type elseType = elseExp.typeCheck();
 
             if (thenType.getClass().equals(elseType.getClass()))
                 return thenType;
             else {
                 System.out.println("Type Error: incompatible types in then and else branches");
-                return new ErrorType() ;
+                return new ErrorType();
             }
         } else {
             System.out.println("Type Error: non boolean condition in if");
-            return new ErrorType() ;
+            return new ErrorType();
         }
     }
 
@@ -110,7 +110,7 @@ public class IfExpNode implements Node {
             elsecode += elseC.codeGeneration();
         }
 
-        return "//start IfExpNode\n"+
+        return "//start IfExpNode\n" +
                 guard.codeGeneration() +
                 "storei T1 1 \n" +
                 "beq A0 T1 " + labelthen + "\n" +
@@ -126,14 +126,14 @@ public class IfExpNode implements Node {
         StringBuilder thenStmString = new StringBuilder();
         StringBuilder elseStmString = new StringBuilder();
 
-        for (Node a: thenStms)
+        for (Node a : thenStms)
             thenStmString.append(a.toPrint("  "));
-        for (Node b: elseStms)
+        for (Node b : elseStms)
             elseStmString.append(b.toPrint("  "));
 
-        String thenString = thenExp.toPrint(s+"  ");
-        String elseString = elseExp.toPrint(s+"  ");
-        return s+"If\n" + guard.toPrint(s+"  ") + thenStmString + thenString + elseStmString  + elseString ;
+        String thenString = thenExp.toPrint(s + "  ");
+        String elseString = elseExp.toPrint(s + "  ");
+        return s + "If\n" + guard.toPrint(s + "  ") + thenStmString + thenString + elseStmString + elseString;
     }
 
 }

@@ -9,9 +9,9 @@ public class PlusNode implements Node {
     private Node left;
     private Node right;
 
-    public PlusNode (Node left, Node right) {
-        this.left = left ;
-        this.right = right ;
+    public PlusNode(Node left, Node right) {
+        this.left = left;
+        this.right = right;
     }
 
     public ArrayList<SemanticError> checkSemantics(SymbolTable ST, int _nesting) {
@@ -24,20 +24,20 @@ public class PlusNode implements Node {
     }
 
     public Type typeCheck() {
-        if ((left.typeCheck() instanceof IntType) && (right.typeCheck() instanceof IntType) )
-            return new IntType() ;
+        if ((left.typeCheck() instanceof IntType) && (right.typeCheck() instanceof IntType))
+            return new IntType();
         else {
-            System.out.println("Type Error: Non integers in addition") ;
-            return new ErrorType() ;
+            System.out.println("Type Error: Non integers in addition");
+            return new ErrorType();
         }
     }
 
 
     public String codeGeneration() {
         return "//start PlusNode\n" +
-                left.codeGeneration()+
+                left.codeGeneration() +
                 "pushr A0 \n" +
-                right.codeGeneration()+
+                right.codeGeneration() +
                 "popr T1 \n" +
                 "add A0 T1 \n" +
                 "popr A0 \n" +
@@ -45,7 +45,7 @@ public class PlusNode implements Node {
     }
 
     public String toPrint(String s) {
-        return s+"Plus\n" + left.toPrint(s+"  ") + right.toPrint(s+"  ") ;
+        return s + "Plus\n" + left.toPrint(s + "  ") + right.toPrint(s + "  ");
     }
 
 }

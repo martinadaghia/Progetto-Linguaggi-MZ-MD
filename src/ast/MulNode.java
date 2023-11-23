@@ -10,8 +10,8 @@ public class MulNode implements Node {
     private Node right;
 
     public MulNode(Node left, Node right) {
-        this.left = left ;
-        this.right = right ;
+        this.left = left;
+        this.right = right;
     }
 
     public ArrayList<SemanticError> checkSemantics(SymbolTable ST, int _nesting) {
@@ -24,16 +24,16 @@ public class MulNode implements Node {
     }
 
     public Type typeCheck() {
-        if ((left.typeCheck() instanceof IntType) && (right.typeCheck() instanceof IntType) )
-            return new IntType() ;
+        if ((left.typeCheck() instanceof IntType) && (right.typeCheck() instanceof IntType))
+            return new IntType();
         else {
-            System.out.println("Type Error: Non integers in multiplication") ;
-            return new ErrorType() ;
+            System.out.println("Type Error: Non integers in multiplication");
+            return new ErrorType();
         }
     }
 
     public String codeGeneration() {
-        return 	 "//start MulNode\n"
+        return "//start MulNode\n"
                 + left.codeGeneration()
                 + "pushr A0 \n"
                 + right.codeGeneration()
@@ -44,7 +44,7 @@ public class MulNode implements Node {
     }
 
     public String toPrint(String s) {
-        return s+"Mult\n" + left.toPrint(s+"  ") + right.toPrint(s+"  ") ;
+        return s + "Mult\n" + left.toPrint(s + "  ") + right.toPrint(s + "  ");
     }
 
 }

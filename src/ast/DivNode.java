@@ -9,9 +9,9 @@ public class DivNode implements Node {
     private Node left;
     private Node right;
 
-    public DivNode (Node left, Node right) {
-        this.left = left ;
-        this.right = right ;
+    public DivNode(Node left, Node right) {
+        this.left = left;
+        this.right = right;
     }
 
     public ArrayList<SemanticError> checkSemantics(SymbolTable ST, int _nesting) {
@@ -24,27 +24,27 @@ public class DivNode implements Node {
     }
 
     public Type typeCheck() {
-        if ((left.typeCheck() instanceof IntType) && (right.typeCheck() instanceof IntType) )
-            return new IntType() ;
+        if ((left.typeCheck() instanceof IntType) && (right.typeCheck() instanceof IntType))
+            return new IntType();
         else {
-            System.out.println("Type Error: Non integers in division") ;
-            return new ErrorType() ;
+            System.out.println("Type Error: Non integers in division");
+            return new ErrorType();
         }
     }
 
     public String codeGeneration() {
-        return 	"//start DivNode\n"
+        return "//start DivNode\n"
                 + left.codeGeneration()
                 + "pushr A0 \n"
                 + right.codeGeneration()
                 + "popr T1 \n"
                 + "div T1 A0 \n"
                 + "popr A0 \n"
-                + "//and DivNode\n" ;
+                + "//and DivNode\n";
     }
 
     public String toPrint(String s) {
-        return s+"Div\n" + left.toPrint(s+"  ") + right.toPrint(s+"  ") ;
+        return s + "Div\n" + left.toPrint(s + "  ") + right.toPrint(s + "  ");
     }
 
 }

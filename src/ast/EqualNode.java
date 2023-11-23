@@ -7,12 +7,12 @@ import semanticanalysis.SemanticError;
 import semanticanalysis.SymbolTable;
 
 public class EqualNode implements Node {
-    private Node left ;
-    private Node right ;
+    private Node left;
+    private Node right;
 
-    public EqualNode (Node left, Node right) {
-        this.left = left ;
-        this.right = right ;
+    public EqualNode(Node left, Node right) {
+        this.left = left;
+        this.right = right;
     }
 
     public ArrayList<SemanticError> checkSemantics(SymbolTable ST, int _nesting) {
@@ -25,34 +25,34 @@ public class EqualNode implements Node {
     }
 
     public Type typeCheck() {
-        Type tl = left.typeCheck() ;
+        Type tl = left.typeCheck();
         Type tr = right.typeCheck();
         if (tl.getClass().equals(tr.getClass()))
-            return new BoolType() ;
+            return new BoolType();
         else {
-            System.out.println("Type Error: Different types in equality") ;
-            return new ErrorType() ;
+            System.out.println("Type Error: Different types in equality");
+            return new ErrorType();
         }
     }
 
     public String codeGeneration() {
         String ltrue = SimpLanlib.freshLabel();
         String lend = SimpLanlib.freshLabel();
-        return	"//start EqualNode\n" +
-                left.codeGeneration()+
+        return "//start EqualNode\n" +
+                left.codeGeneration() +
                 "pushr A0 \n" +
-                right.codeGeneration()+
+                right.codeGeneration() +
                 "popr T1 \n" +
-                "beq A0 T1 "+ ltrue +"\n"+
-                "storei A0 0\n"+
+                "beq A0 T1 " + ltrue + "\n" +
+                "storei A0 0\n" +
                 "b " + lend + "\n" +
-                ltrue + ":\n"+
+                ltrue + ":\n" +
                 "storei A0 1\n" +
                 lend + ":\n" +
-                "//and EqualNode\n" ;
+                "//and EqualNode\n";
     }
 
     public String toPrint(String s) {
-        return s+"Equal\n" + left.toPrint(s+"  ") + right.toPrint(s+"  ") ;
+        return s + "Equal\n" + left.toPrint(s + "  ") + right.toPrint(s + "  ");
     }
 }

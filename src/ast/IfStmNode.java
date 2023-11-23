@@ -7,14 +7,14 @@ import semanticanalysis.SymbolTable;
 import java.util.ArrayList;
 
 public class IfStmNode implements Node {
-    private Node guard ;
-    private ArrayList<Node> thenbranches ;
-    private ArrayList<Node> elsebranches ;
+    private Node guard;
+    private ArrayList<Node> thenbranches;
+    private ArrayList<Node> elsebranches;
 
     public IfStmNode(Node guard, ArrayList<Node> thenbranches, ArrayList<Node> elsebranches) {
-        this.guard = guard ;
-        this.thenbranches = thenbranches ;
-        this.elsebranches = elsebranches ;
+        this.guard = guard;
+        this.thenbranches = thenbranches;
+        this.elsebranches = elsebranches;
     }
 
     @Override
@@ -31,8 +31,8 @@ public class IfStmNode implements Node {
         SymbolTable thenST = new SymbolTable();
         SymbolTable elseST = new SymbolTable();
 
-        if(thenbranches != null) {
-            for(Node tb : thenbranches) {
+        if (thenbranches != null) {
+            for (Node tb : thenbranches) {
                 errors.addAll(tb.checkSemantics(ST, _nesting));
             }
             // Salviamo la ST aggiornata del then
@@ -43,7 +43,7 @@ public class IfStmNode implements Node {
         }
 
         if (elsebranches != null) {
-            for(Node eb : elsebranches) {
+            for (Node eb : elsebranches) {
                 errors.addAll(eb.checkSemantics(ST, _nesting));
             }
             // Salviamo la ST aggiornata dell'else
@@ -62,21 +62,21 @@ public class IfStmNode implements Node {
     public Type typeCheck() {
         if (guard.typeCheck() instanceof BoolType) {
 
-            Type thenType = new Type() ;
-            Type elseType = new Type() ;
+            Type thenType = new Type();
+            Type elseType = new Type();
 
-            if(thenbranches != null) {
-                for(Node tb : thenbranches) {
-                    thenType = tb.typeCheck() ;
-                    if(thenType instanceof ErrorType)
+            if (thenbranches != null) {
+                for (Node tb : thenbranches) {
+                    thenType = tb.typeCheck();
+                    if (thenType instanceof ErrorType)
                         return new ErrorType();
                 }
             }
 
-            if(elsebranches != null) {
-                for(Node eb : elsebranches) {
-                    elseType = eb.typeCheck() ;
-                    if(elseType instanceof ErrorType)
+            if (elsebranches != null) {
+                for (Node eb : elsebranches) {
+                    elseType = eb.typeCheck();
+                    if (elseType instanceof ErrorType)
                         return new ErrorType();
                 }
             }
@@ -85,7 +85,7 @@ public class IfStmNode implements Node {
 
         } else {
             System.out.println("Type Error: non boolean condition in if");
-            return new ErrorType() ;
+            return new ErrorType();
         }
     }
 
@@ -93,18 +93,19 @@ public class IfStmNode implements Node {
         String lelse = SimpLanlib.freshLabel();
         String lend = SimpLanlib.freshLabel();
         StringBuilder thenB = new StringBuilder();
-        StringBuilder elseB = new StringBuilder();;
+        StringBuilder elseB = new StringBuilder();
+        ;
 
-        for(Node tb : thenbranches)
+        for (Node tb : thenbranches)
             thenB.append(tb.codeGeneration());
 
-        for(Node eb : elsebranches)
+        for (Node eb : elsebranches)
             elseB.append(eb.codeGeneration());
 
-        return    "//start IfStmNode\n"
+        return "//start IfStmNode\n"
                 + guard.codeGeneration()
                 + "storei T1 1 \n"
-                + "beq A0 T1 "+ lelse + "\n"
+                + "beq A0 T1 " + lelse + "\n"
                 + elseB
                 + "b " + lend + "\n"
                 + lelse + ":\n"
@@ -116,15 +117,15 @@ public class IfStmNode implements Node {
     public String toPrint(String s) {
         String thenString = "  ";
         String elseString = "  ";
-        if(thenbranches != null) {
-            for(Node tb : thenbranches)
-                thenString = tb.toPrint(s+"  ");
+        if (thenbranches != null) {
+            for (Node tb : thenbranches)
+                thenString = tb.toPrint(s + "  ");
         }
-        if(elsebranches != null) {
-            for(Node eb : elsebranches)
-                elseString = eb.toPrint(s+"  ");
+        if (elsebranches != null) {
+            for (Node eb : elsebranches)
+                elseString = eb.toPrint(s + "  ");
         }
-        return s+"If\n" + guard.toPrint(s+"  ") + thenString  + elseString ;
+        return s + "If\n" + guard.toPrint(s + "  ") + thenString + elseString;
     }
 
 }
