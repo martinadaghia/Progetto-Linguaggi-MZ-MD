@@ -10,9 +10,9 @@ public class LessEqualNode implements Node {
     private Node left;
     private Node right;
 
-    public LessEqualNode(Node _left, Node _right) {
-        left = _left;
-        right = _right;
+    public LessEqualNode(Node left, Node right) {
+        this.left = left;
+        this.right = right;
     }
 
     @Override

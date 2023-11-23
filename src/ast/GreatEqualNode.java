@@ -10,9 +10,9 @@ public class GreatEqualNode implements Node {
     private Node left;
     private Node right;
 
-    public GreatEqualNode(Node _left, Node _right) {
-        left = _left;
-        right = _right;
+    public GreatEqualNode(Node left, Node right) {
+        this.left = left;
+        this.right = right;
     }
 
     @Override

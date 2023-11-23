@@ -14,12 +14,12 @@ public class IfExpNode implements Node {
     private ArrayList<Node> thenStms;
     private ArrayList<Node> elseStms;
 
-    public IfExpNode(Node condExp, ArrayList<Node> _thenStms, Node _thenExp, ArrayList<Node> _elseStms, Node _elseExp) {
-        guard = condExp;
-        thenExp = _thenExp;
-        elseExp = _elseExp;
-        thenStms = _thenStms;
-        elseStms = _elseStms;
+    public IfExpNode(Node condExp, ArrayList<Node> thenStms, Node thenExp, ArrayList<Node> elseStms, Node elseExp) {
+        this.guard = condExp;
+        this.thenExp = thenExp;
+        this.elseExp = elseExp;
+        this.thenStms = thenStms;
+        this.elseStms = elseStms;
     }
 
     @Override

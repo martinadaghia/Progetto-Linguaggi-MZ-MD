@@ -6,9 +6,9 @@ public class ArrowType extends Type {
     private ArrayList<Type> inputtype;
     private Type outputtype;
 
-    public ArrowType(ArrayList<Type> _inputtype , Type _outputtype) {
-        inputtype = _inputtype ;
-        outputtype = _outputtype;
+    public ArrowType(ArrayList<Type> inputtype , Type outputtype) {
+        this.inputtype = inputtype ;
+        this.outputtype = outputtype;
     }
 
     public Type get_outputtype () { //

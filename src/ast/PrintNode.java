@@ -8,8 +8,8 @@ import java.util.ArrayList;
 public class PrintNode implements Node {
     private Node exp;
 
-    public PrintNode (Node _exp) {
-        exp = _exp ;
+    public PrintNode (Node exp) {
+        this.exp = exp ;
     }
 
     public ArrayList<SemanticError> checkSemantics(SymbolTable ST, int _nesting) {

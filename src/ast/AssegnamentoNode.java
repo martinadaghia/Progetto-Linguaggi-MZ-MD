@@ -12,9 +12,9 @@ public class AssegnamentoNode implements Node {
     private Node exp;
     private int nesting;
 
-    public AssegnamentoNode(String _id, Node _exp) {
-        id = _id ;
-        exp = _exp ;
+    public AssegnamentoNode(String id, Node exp) {
+        this.id = id ;
+        this.exp = exp ;
     }
 
     @Override

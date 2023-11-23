@@ -10,9 +10,9 @@ public class EqualNode implements Node {
     private Node left ;
     private Node right ;
 
-    public EqualNode (Node _left, Node _right) {
-        left = _left ;
-        right = _right ;
+    public EqualNode (Node left, Node right) {
+        this.left = left ;
+        this.right = right ;
     }
 
     public ArrayList<SemanticError> checkSemantics(SymbolTable ST, int _nesting) {

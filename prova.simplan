@@ -1,2 +1,17 @@
-3 == false
 
+int x;
+int y;
+int sum (int n, int tot){
+    if(n<=0){
+        x=tot;
+    }
+    sum(n-1, tot+n);
+}
+/*
+x=0;
+sum(10, 0);
+x
+*/
+void sum(){
+
+}

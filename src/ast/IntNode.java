@@ -8,8 +8,8 @@ import semanticanalysis.SymbolTable;
 public class IntNode implements Node {
     private Integer val;
 
-    public IntNode (Integer _val) {
-        val = _val ;
+    public IntNode (Integer val) {
+        this.val = val ;
     }
 
     public ArrayList<SemanticError> checkSemantics(SymbolTable ST, int _nesting) {

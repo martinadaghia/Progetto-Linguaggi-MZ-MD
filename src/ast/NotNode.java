@@ -9,8 +9,8 @@ import semanticanalysis.SymbolTable;
 public class NotNode implements Node {
     private Node right;
 
-    public NotNode(Node _right) {
-        right = _right;
+    public NotNode(Node right) {
+        this.right = right;
     }
 
     @Override

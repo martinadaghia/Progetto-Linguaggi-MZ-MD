@@ -10,9 +10,9 @@ public class GreatNode implements Node {
     private Node left;
     private Node right;
 
-    public GreatNode(Node _left, Node _right) {
-        left = _left;
-        right = _right;
+    public GreatNode(Node left, Node right) {
+        this.left = left;
+        this.right = right;
     }
 
     @Override

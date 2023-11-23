@@ -74,24 +74,29 @@ public class FunNode implements Node {
     }
 
     public Type typeCheck () {
-        Type typeBody = body.typeCheck();
+
         if(body == null && returntype.getClass().equals(ast.VoidType.class)) {
             return new VoidType() ;
-        } else if(body != null && typeBody.getClass().equals(returntype.getClass())) {
+        } else if(body != null && body.typeCheck().getClass().equals(returntype.getClass())) {
             return returntype ;
-        } else if(typeBody instanceof ErrorType) {
+        } else if(body != null && body.typeCheck() instanceof ErrorType) {
             return new ErrorType() ;
-        }else {
+        } else {
             System.out.println("Type Error: Function return type doesn't match statement/expression type") ;
             return new ErrorType();
         }
+
     }
 
     public String codeGeneration() {
+        String bodyCode = "";
+        if(body != null){
+            bodyCode = body.codeGeneration();
+        }
         SimpLanlib.putCode(
                 flabel + ":\n"
                         + "pushr RA \n"
-                        + body.codeGeneration()
+                        + bodyCode
                         + "popr RA \n"
                         + "addi SP " + 	parlist.size() + "\n"
                         + "pop \n"

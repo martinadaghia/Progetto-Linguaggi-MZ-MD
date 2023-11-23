@@ -15,10 +15,10 @@ public class MultiDecNode implements Node {
     private Node exp ;
     private int nesting ;
 
-    public MultiDecNode (ArrayList<Node> _dec, ArrayList<Node> _stm, Node _exp) {
-        dec = _dec ;
-        stm = _stm ;
-        exp = _exp ;
+    public MultiDecNode (ArrayList<Node> dec, ArrayList<Node> stm, Node exp) {
+        this.dec = dec ;
+        this.stm = stm ;
+        this.exp = exp ;
     }
 
     public ArrayList<SemanticError> checkSemantics(SymbolTable ST, int _nesting) {

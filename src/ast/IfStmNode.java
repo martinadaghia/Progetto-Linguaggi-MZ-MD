@@ -11,10 +11,10 @@ public class IfStmNode implements Node {
     private ArrayList<Node> thenbranches ;
     private ArrayList<Node> elsebranches ;
 
-    public IfStmNode(Node _guard, ArrayList<Node> _thenbranches, ArrayList<Node> _elsebranches) {
-        guard = _guard ;
-        thenbranches = _thenbranches ;
-        elsebranches = _elsebranches ;
+    public IfStmNode(Node guard, ArrayList<Node> thenbranches, ArrayList<Node> elsebranches) {
+        this.guard = guard ;
+        this.thenbranches = thenbranches ;
+        this.elsebranches = elsebranches ;
     }
 
     @Override
