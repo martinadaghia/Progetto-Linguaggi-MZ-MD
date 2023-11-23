@@ -6,13 +6,13 @@ import semanticanalysis.SymbolTable;
 
 import java.util.ArrayList;
 
-public class AssegnamentoNode implements Node {
+public class AssNode implements Node {
     private String id;
     private STentry stentry ;
     private Node exp;
     private int nesting;
 
-    public AssegnamentoNode(String id, Node exp) {
+    public AssNode(String id, Node exp) {
         this.id = id ;
         this.exp = exp ;
     }

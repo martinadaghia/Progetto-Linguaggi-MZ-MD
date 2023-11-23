@@ -106,7 +106,7 @@ public class SimpLanPlusVisitorImpl extends SimpLanPlusBaseVisitor<Node> {
 
     @Override
     public Node visitAssignExp(SimpLanPlusParser.AssignExpContext ctx) {
-        return new AssegnamentoNode(ctx.ID().getText(), visit(ctx.exp()) );
+        return new AssNode(ctx.ID().getText(), visit(ctx.exp()) );
     }
 
     @Override
