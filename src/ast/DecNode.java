@@ -21,7 +21,7 @@ public class DecNode implements Node {
         ArrayList<SemanticError> errors = new ArrayList<>();
         nesting = _nesting;
 
-        if (ST.top_lookup(id)) { //se non è definita all'interno dello scoope. top_lookup guarda l'ultimo ambiente disponibile
+        if (ST.top_lookup(id)) {
             errors.add(new SemanticError("Var id " + id + " already declared"));
         } else {
             ST.insert(id, (Type) type, nesting, "");

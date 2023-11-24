@@ -7,12 +7,10 @@ import parser.SimpLanPlusParser;
 import java.util.ArrayList;
 
 public class SimpLanPlusVisitorImpl extends SimpLanPlusBaseVisitor<Node> {
-    /*
-     * classe è utilizzata per creare un visitor per l'analisi sintattica di un linguaggio di programmazione = SimpLan
-     * visitor  utilizzato per attraversare l'albero sintattico generato da un parser ANTLR e creare un'altra struttura dati =  Abstract Syntax Tree (AST) che rappresenta il programma in modo più manipolabile e strutturato*/
+
     @Override
     public Node visitSingleExp(SimpLanPlusParser.SingleExpContext ctx) {
-        //restituisce il risultato della visita all'interno dell'espressione
+        // restituisce il risultato della visita all'interno dell'espressione
         return new ProgNode(visit(ctx.exp()));
     }
 
@@ -120,6 +118,12 @@ public class SimpLanPlusVisitorImpl extends SimpLanPlusBaseVisitor<Node> {
         return new CallFunNode(ctx.ID().getText(), _param);
     }
 
+    /**
+     * Override del metodo di visita per il nodo IfStm del parser ANTLR.
+     *
+     * @param ctx Il contesto del nodo IfStm.
+     * @return Il nodo IfStm corrispondente.
+     */
     @Override
     public Node visitIfStm(SimpLanPlusParser.IfStmContext ctx) {
         Node condExp = visit(ctx.cond);
@@ -128,24 +132,37 @@ public class SimpLanPlusVisitorImpl extends SimpLanPlusBaseVisitor<Node> {
         ArrayList<Node> elseStms = new ArrayList<Node>();
 
         boolean elseBranch = false;
+
+        // itera sui figli del contesto
         for (org.antlr.v4.runtime.tree.ParseTree i : ctx.children) {
             if (i.getText().equals("else"))
                 elseBranch = true;
+
+            // se il figlio è di uno dei tipi specificati (AssignExp, IfStm, FunExp),
             if (i.getClass().equals(parser.SimpLanPlusParser.AssignExpContext.class) ||
                     i.getClass().equals(SimpLanPlusParser.IfStmContext.class) ||
                     i.getClass().equals(SimpLanPlusParser.FunExpContext.class)) {
+                // aggiunge il risultato della visita alla lista corrispondente (then o else)
                 if (!elseBranch)
                     thenStms.add(visit(i));
                 else
                     elseStms.add(visit(i));
             }
         }
+
+        // restituisce un nuovo nodo IfStm con le informazioni raccolte
         return new IfStmNode(condExp, thenStms, elseStms);
     }
 
+
+    /**
+     * Override del metodo di visita per il nodo IfExp del parser ANTLR.
+     *
+     * @param ctx Il contesto del nodo IfExp.
+     * @return Il nodo IfExp corrispondente.
+     */
     @Override
     public Node visitIfExp(SimpLanPlusParser.IfExpContext ctx) {
-
         Node condExp = visit(ctx.cond);
 
         ArrayList<Node> thenStms = new ArrayList<Node>();
@@ -154,9 +171,13 @@ public class SimpLanPlusVisitorImpl extends SimpLanPlusBaseVisitor<Node> {
         Node elseExp = null;
 
         boolean elseBranch = false;
+
+        // itera sui figli del contesto
         for (org.antlr.v4.runtime.tree.ParseTree i : ctx.children) {
             if (i.getText().equals("else"))
                 elseBranch = true;
+
+            // se il figlio è di uno dei tipi specificati (AssignExp, IfStm, FunExp),
             if (i.getClass().equals(parser.SimpLanPlusParser.AssignExpContext.class) ||
                     i.getClass().equals(SimpLanPlusParser.IfStmContext.class) ||
                     i.getClass().equals(SimpLanPlusParser.FunExpContext.class)) {
@@ -164,7 +185,9 @@ public class SimpLanPlusVisitorImpl extends SimpLanPlusBaseVisitor<Node> {
                     thenStms.add(visit(i));
                 else
                     elseStms.add(visit(i));
-            } else if (i.getClass().equals(SimpLanPlusParser.ExpContext.class) ||
+            }
+            // se il figlio è di uno dei tipi specificati (Exp, Gle, Muldiv, Plussub, Not, Andor, IfExp, BaseExp, SingleExp, VarExp, IntVal, BoolVal, FunExp2),
+            else if (i.getClass().equals(SimpLanPlusParser.ExpContext.class) ||
                     i.getClass().equals(SimpLanPlusParser.GleContext.class) ||
                     i.getClass().equals(SimpLanPlusParser.MuldivContext.class) ||
                     i.getClass().equals(SimpLanPlusParser.PlussubContext.class) ||
@@ -178,17 +201,18 @@ public class SimpLanPlusVisitorImpl extends SimpLanPlusBaseVisitor<Node> {
                     i.getClass().equals(SimpLanPlusParser.BoolValContext.class) ||
                     i.getClass().equals(SimpLanPlusParser.FunExp2Context.class)
             ) {
+                // assegna il risultato della visita alle variabili thenExp o elseExp a seconda del blocco in cui si trova
                 if (!elseBranch)
                     thenExp = (visit(i));
                 else
                     elseExp = (visit(i));
             }
-
         }
 
+        // restituisce un nuovo nodo IfExp con le informazioni raccolte
         return new IfExpNode(condExp, thenStms, thenExp, elseStms, elseExp);
-
     }
+
 
     @Override
     public Node visitBaseExp(SimpLanPlusParser.BaseExpContext ctx) {
@@ -297,15 +321,11 @@ public class SimpLanPlusVisitorImpl extends SimpLanPlusBaseVisitor<Node> {
     @Override
     public Node visitMuldiv(SimpLanPlusParser.MuldivContext ctx) {
         if (ctx.mul != null) { //moltiplicazione
-
             return new MulNode(visit(ctx.left), visit(ctx.right));
-
         } else if (ctx.div != null) { //divisione
-
             return new DivNode(visit(ctx.left), visit(ctx.right));
-
         } else {
-            return null; //sono indecisa se toglierlo dall'else e lasciarlo sotto da solo o lasciarlo dentro all'else
+            return null;
         }
     }
 

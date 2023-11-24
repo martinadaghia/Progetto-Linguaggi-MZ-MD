@@ -48,22 +48,23 @@ public class MultiDecNode implements Node {
     }
 
     public Type typeCheck() {
-        // Controlliamo che le dichiarazioni non abbiano errori
+        // controlliamo che le dichiarazioni non abbiano errori
         for (Node d : dec) {
             if (d.typeCheck() instanceof ErrorType)
                 return new ErrorType();
         }
-        // Controlliamo che gli statement non abbiano errori
+        // controlliamo che gli statement non abbiano errori
         if (stm != null) {
             for (Node s : stm) {
                 if (s.typeCheck() instanceof ErrorType)
                     return new ErrorType();
             }
         }
-        // Controlliamo che l'espressione non abbia errori
+        // controlliamo che l'espressione non abbia errori
         if (exp != null)
             return exp.typeCheck();
-        // Se non c'e' un'espressione e non ci sono errori ritorniamo Void
+
+        // se non c'è un'espressione e non ci sono errori ritorniamo Void
         return new VoidType();
     }
 

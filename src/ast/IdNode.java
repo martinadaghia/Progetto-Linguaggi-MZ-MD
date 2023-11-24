@@ -33,6 +33,7 @@ public class IdNode implements Node {
                     // Verifica che la variabile sia dichiarata in un'altro scope ed è sempre non inizializzata
                     System.out.println("WARNING: var " + id + " (nestlvl: " + st_type.getnesting() + ") might not be initialised");
                 }
+
             }
             /*Se è dichiarata in un altro scope e non è ancora stata inizializzata -> warning
             } else if(!ST.top_lookup(id) && !st_type.getInitialized()) {
@@ -48,7 +49,9 @@ public class IdNode implements Node {
         if (type.gettype() instanceof ArrowType) { //
             System.out.println("Wrong usage of function identifier");
             return new ErrorType();
-        } else return type.gettype();
+        } else {
+            return type.gettype();
+        }
     }
 
     public String codeGeneration() {

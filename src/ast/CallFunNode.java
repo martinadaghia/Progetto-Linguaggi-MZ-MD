@@ -69,6 +69,7 @@ public class CallFunNode implements Node {
         for (int i = 0; i < parameters.size(); i = i + 1)
             parCode += parameters.get(i).codeGeneration() + "pushr A0\n";
 
+        // per risalire la catena statica
         String getAR = "";
         for (int i = 0; i < nesting - entry.getnesting(); i++)
             getAR += "store T1 0(T1) \n";
@@ -76,16 +77,16 @@ public class CallFunNode implements Node {
 
         return "//start CallFunNode\n"
                 + "pushr FP \n" // carico il frame pointer
-                + "move SP FP \n"
+                + "move SP FP \n" // inizializzo FP
                 + "addi FP 1 \n" // salvo in FP il puntatore all'indirizzo del frame pointer caricato
                 + "move AL T1\n" // risalgo la catena statica
-                + getAR
+                + getAR // carico l'access link statico
                 + "pushr T1 \n" // salvo sulla pila l'access link statico
                 + parCode // calcolo i parametri attuali con l'access link del chiamante
-                + "move FP AL \n"
-                + "subi AL 1 \n"
-                + "jsub " + entry.getlabel() + "\n"
-                + "//and CallFunNode\n";
+                + "move FP AL \n" // imposto il FP al nuovo access link
+                + "subi AL 1 \n" // imposto l'access link al livello corretto
+                + "jsub " + entry.getlabel() + "\n" // chiamata alla funzione
+                + "//end CallFunNode\n";
     }
 
     public String toPrint(String s) {  //

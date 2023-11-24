@@ -4,7 +4,6 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-
 import ast.*;
 import evaluator.ExecuteVM;
 import org.antlr.v4.runtime.ANTLRInputStream;
@@ -43,10 +42,10 @@ public class Main {
 
         Node ast = visitor.visit(parser.prog()); //generazione AST
 
-        //Controllo il numero totale di errori che ha raccolto il listener, faccio il controllo sull'arraylist e stampo il numero totale di errori e gli errori sul file txt
+        // controllo il numero totale di errori che ha raccolto il listener, faccio il controllo sull'arraylist e stampo il numero totale di errori e gli errori sul file txt
         int numErrors = errorsList.size();
 
-        //CONTROLLO ERRORI LESSICALI NO SINTATTICI
+        // CONTROLLO ERRORI LESSICALI NO SINTATTICI
 
         if (numErrors > 0) {
             System.out.println("The program was not in the right format. Exiting the compilation process now");
@@ -68,7 +67,7 @@ public class Main {
 
             System.exit(1); //chiudi il programma alla fine
         } else {
-            //ERRORI SEMANTICI
+            // ERRORI SEMANTICI
             SymbolTable ST = new SymbolTable();
             ArrayList<SemanticError> errors = ast.checkSemantics(ST, 0);
             if (errors.size() > 0) {
@@ -113,7 +112,6 @@ public class Main {
                 System.out.println("Starting Virtual Machine...");
                 ExecuteVM vm = new ExecuteVM(visitorSVM.code, type instanceof VoidType);
                 vm.cpu();
-
 
             }
         }

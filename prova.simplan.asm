@@ -1,15 +1,10 @@
-//start ProgNode
-//start PlusNode
-//start IntNode
-storei A0 3
-//end IntNode
-pushr A0 
-//start BoolNode
-storei A0 1
-//and BoolNode
-popr T1 
-add A0 T1 
-popr A0 
-//end PlusNode
+//start MultiDecNode
+move SP FP  
+pushr FP 
+move SP AL 
+pushr AL 
+//start DecNode
+push 0 
+//and DecNode
 halt
-//end ProgNode
+//end MultiDecNode

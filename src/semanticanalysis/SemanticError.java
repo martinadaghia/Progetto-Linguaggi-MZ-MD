@@ -3,8 +3,8 @@ package semanticanalysis;
 public class SemanticError {
     private String msg;
 
-    public SemanticError(String _msg) {
-        msg = _msg;
+    public SemanticError(String msg) {
+        this.msg = msg;
     }
 
     public String toString() {

@@ -14,7 +14,6 @@ public class ProgNode implements Node {
 
     @Override
     public ArrayList<SemanticError> checkSemantics(SymbolTable ST, int nesting) {
-
         return exp.checkSemantics(ST, nesting);
     }
 

@@ -6,7 +6,6 @@ import semanticanalysis.SymbolTable;
 import java.util.ArrayList;
 
 public class ParamNode implements Node {
-
     private String id;
     private Type type;
     private int nesting;

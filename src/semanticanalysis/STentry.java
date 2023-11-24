@@ -2,17 +2,15 @@ package semanticanalysis;
 
 import ast.Type;
 
-/* STentry rappresenta una voce nella tabella dei simboli durante l'analisi semantica */
 public class STentry {
 
-    private Type type; //tipo associato all'id (=variabile)
-    private int offset; //offset associato all'id. offset = posizione dell'identificatore nella memoria
-    private int nesting; //= a quale livello di scope l'id appartiene
-    private String label; //etichetta associata all'id
+    private Type type; // tipo dell'id
+    private int offset; // offset dell'id
+    private int nesting; // a quale livello di scope l'id appartiene
+    private String label; // etichetta associata all'id
 
     private boolean initialized = false;
 
-    //costruttore per le variabili
     public STentry(Type type, int offset, int nesting, boolean initialized) {
         this.type = type;
         this.offset = offset;

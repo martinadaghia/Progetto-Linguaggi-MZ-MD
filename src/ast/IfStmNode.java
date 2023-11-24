@@ -23,11 +23,11 @@ public class IfStmNode implements Node {
 
         errors.addAll(guard.checkSemantics(ST, _nesting));
 
-        // Salviamo la ST iniziale per restorarla dopo l'if
+        // salviamo la ST iniziale per restorarla dopo l'if
         SymbolTable oldST = new SymbolTable();
         oldST.setSymbol_table(ST.getSymbol_table());
         oldST.setOffset(ST.getOffset());
-        // Salviamo le ST generate nel then e nell'else per confrontarle in seguito
+        // salviamo le ST generate nel then e nell'else per confrontarle in seguito
         SymbolTable thenST = new SymbolTable();
         SymbolTable elseST = new SymbolTable();
 
@@ -35,7 +35,7 @@ public class IfStmNode implements Node {
             for (Node tb : thenbranches) {
                 errors.addAll(tb.checkSemantics(ST, _nesting));
             }
-            // Salviamo la ST aggiornata del then
+            // salviamo la ST aggiornata del then
             thenST.setSymbol_table(ST.getSymbol_table());
             thenST.setOffset(ST.getOffset());
 
@@ -53,7 +53,7 @@ public class IfStmNode implements Node {
             ST.restore(oldST.getSymbol_table(), oldST.getOffset());
         }
 
-        // Facciamo il caso pessimo tra le due ST
+        // facciamo il caso pessimo tra le due ST
         ST.union(thenST, elseST);
 
         return errors;
@@ -94,7 +94,6 @@ public class IfStmNode implements Node {
         String lend = SimpLanlib.freshLabel();
         StringBuilder thenB = new StringBuilder();
         StringBuilder elseB = new StringBuilder();
-        ;
 
         for (Node tb : thenbranches)
             thenB.append(tb.codeGeneration());

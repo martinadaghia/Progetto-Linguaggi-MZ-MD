@@ -28,11 +28,11 @@ public class IfExpNode implements Node {
 
         errors.addAll(guard.checkSemantics(ST, _nesting));
 
-        // Salviamo la ST iniziale per restorarla dopo l'if
+        // salviamo la ST iniziale per restorarla dopo l'if
         SymbolTable oldST = new SymbolTable();
         oldST.setSymbol_table(ST.getSymbol_table());
         oldST.setOffset(ST.getOffset());
-        // Salviamo le ST generate nel then e nell'else per confrontarle in seguito
+        // salviamo le ST generate nel then e nell'else per confrontarle in seguito
         SymbolTable thenST = new SymbolTable();
         SymbolTable elseST = new SymbolTable();
 
@@ -41,7 +41,7 @@ public class IfExpNode implements Node {
                 errors.addAll(then.checkSemantics(ST, _nesting));
             }
         }
-        // Salviamo la ST aggiornata del then
+        // salviamo la ST aggiornata del then
         thenST.setSymbol_table(ST.getSymbol_table());
         thenST.setOffset(ST.getOffset());
         errors.addAll(thenExp.checkSemantics(ST, _nesting));
@@ -53,14 +53,14 @@ public class IfExpNode implements Node {
                 errors.addAll(i.checkSemantics(ST, _nesting));
             }
         }
-        // Salviamo la ST aggiornata dell'else
+        // salviamo la ST aggiornata dell'else
         elseST.setSymbol_table(ST.getSymbol_table());
         elseST.setOffset(ST.getOffset());
         errors.addAll(elseExp.checkSemantics(ST, _nesting));
 
         ST.restore(oldST.getSymbol_table(), oldST.getOffset());
 
-        // Facciamo il caso pessimo tra le due ST
+        // facciamo il caso pessimo tra le due ST
         ST.union(thenST, elseST);
 
         return errors;
@@ -84,9 +84,9 @@ public class IfExpNode implements Node {
             Type thenType = thenExp.typeCheck();
             Type elseType = elseExp.typeCheck();
 
-            if (thenType.getClass().equals(elseType.getClass()))
+            if (thenType.getClass().equals(elseType.getClass())) {
                 return thenType;
-            else {
+            } else {
                 System.out.println("Type Error: incompatible types in then and else branches");
                 return new ErrorType();
             }

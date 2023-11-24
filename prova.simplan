@@ -10,11 +10,13 @@ int sum (int n, int tot){
 
 x=0;
 sum(10, 0);
-x
 
 void sum(){
 
 }
 */
+int x;
+if(true){
+    x;
+}
 
-g(3)
