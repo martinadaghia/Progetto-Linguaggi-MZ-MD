@@ -1,3 +1,4 @@
-Numero totale di errori: 1
+Numero totale di errori: 2
  ** Analisi lessicale fallita ** 
-ERRORE lessicale  alla linea 20, posizione 5: no viable alternative at input 'if(true){x;'
+ERRORE lessicale  alla linea 38, posizione 6: token recognition error at: '.'
+ERRORE lessicale  alla linea 38, posizione 10: token recognition error at: '.'

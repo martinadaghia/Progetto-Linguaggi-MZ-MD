@@ -10,10 +10,8 @@ public class SVMVisitorImpl extends SVMBaseVisitor<Void> {
 
     public AssemblyClass[] code = new AssemblyClass[ExecuteVM.CODESIZE];
     private int i = 0;
-    private HashMap<String, Integer> labelAdd = new HashMap<String, Integer>();
-    // definisce a quale linea  di codice corrisponde una etichetta
-    private HashMap<Integer, String> labelRef = new HashMap<Integer, String>();
-    // definisce l'insieme di linee di codice che contengono una certa etichetta
+    private HashMap<String, Integer> labelAdd = new HashMap<String, Integer>(); // definisce a quale linea  di codice corrisponde una etichetta
+    private HashMap<Integer, String> labelRef = new HashMap<Integer, String>(); // definisce l'insieme di linee di codice che contengono una certa etichetta
 
     public Void visitAssembly(SVMParser.AssemblyContext ctx) {
         visitChildren(ctx);

@@ -14,9 +14,25 @@ sum(10, 0);
 void sum(){
 
 }
-*/
+
 int x;
 if(true){
     x;
 }
+*/
+int u;
+void f(int m, int n){
+      int x ;
+      if (m>n) { u = m+n ;}
+      else { x = 1 ; f(m+1,n+1) ; }
+}
+f(4,5) ;
+u;
+
+
+
+
+
+
+
 
