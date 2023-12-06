@@ -20,7 +20,7 @@ type   : 'int'
        | 'void'
        ;
 
-stm    : ID '=' exp ';'     #assignExp //assegnamento
+stm    : ID '=' exp ';'     #assignExp //AssNode
        | ID '(' (exp (',' exp)* )? ')' ';'       #funExp
        | 'if' '(' cond=exp ')' '{' (thenBranch=stm+) '}' (else='else' '{' (elseBranch=stm+) '}')?         #ifStm
 	   ;

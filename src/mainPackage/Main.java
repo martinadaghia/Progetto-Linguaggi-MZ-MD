@@ -66,10 +66,13 @@ public class Main {
             }
 
             System.exit(1); //chiudi il programma alla fine
+
         } else {
+
             // ERRORI SEMANTICI
             SymbolTable ST = new SymbolTable();
             ArrayList<SemanticError> errors = ast.checkSemantics(ST, 0);
+
             if (errors.size() > 0) {
                 System.out.println(" ** Analisi semantica fallita! ** ");
                 System.out.println("You had: " + errors.size() + " errors:");

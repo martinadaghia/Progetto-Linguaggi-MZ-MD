@@ -3,7 +3,6 @@ package semanticanalysis;
 import ast.BoolType;
 import ast.IntType;
 import ast.Type;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -46,20 +45,6 @@ public class SymbolTable {
         return (T != null); //true o false
     }
 
-    // cerca un id specificato nella tabella e restituisce il nesting level in cui viene trovato
-    public Integer nslookup(String id) {
-        int n = symbol_table.size() - 1;
-        boolean found = false;
-        while ((n >= 0) && !found) {
-            HashMap<String, STentry> H = symbol_table.get(n);
-            if (H.get(id) != null)
-                found = true;
-            else
-                n = n - 1;
-        }
-        return n; // = livello in cui viene trovato l'id, se l'id non viene trovato restituisce -1
-    }
-
     // aggiunge un nuovo ambiente alla tabella
     public void add(HashMap<String, STentry> H) {
         symbol_table.add(H);
@@ -97,16 +82,6 @@ public class SymbolTable {
         }
 
         offset.add(offs); // aggiunto nuovo offset alla lista
-    }
-
-
-    public void printST() {
-        System.out.println("****** Symbol Table ******");
-        for (int i = 0; i < symbol_table.size(); i++) {
-            symbol_table.get(i).forEach((key, value) -> System.out.println(key + ": " + value.gettype().getClass() + ", " + value.getnesting()));
-            if (i != symbol_table.size() - 1) System.out.println("-------");
-        }
-        System.out.println("************************** \n");
     }
 
     // GETTER
@@ -165,7 +140,7 @@ public class SymbolTable {
                     for (HashMap.Entry<String, STentry> e2 : hm2.entrySet()) {
                         // controlliamo se inizializzano la stessa variabile
                         if (e1.getKey().equals(e2.getKey())) {
-                            // ottieni l'entry corrente nella tabella corrente
+                            // ottieni l'entry della variabile in comune corrente nella tabella corrente
                             STentry currEntry = this.lookup(e1.getKey());
                             // se entrambe le tabelle inizializzano la variabile, la segna come inizializzata
                             if (currEntry != null && e1.getValue().getInitialized() && e2.getValue().getInitialized()) {
@@ -187,25 +162,28 @@ public class SymbolTable {
         offset.add(offs);
     }
 
-    /* utilizzato per ottenere il tipo di un id dalla tabella
-    public Type getType(String id, int nesting) {
-        int n = nesting;
-        boolean found = false; //id trovato oppure no
-        while (n >= 0 && !found) {
-            HashMap<String, STentry> H = symbol_table.get(n);
-            STentry entry = H.get(id);
-            if (entry != null) { //se entry non è null --> l'ho trovato e restituisco il tipo
-                found = true;
-                return entry.getType();
-            }
-            n--; //decremento e ripeto il while finchè non esaurisco tutti i livelli
+    public void printST() {
+        System.out.println("****** Symbol Table ******");
+        for (int i = 0; i < symbol_table.size(); i++) {
+            symbol_table.get(i).forEach((key, value) -> System.out.println(key + ": " + value.gettype().getClass() + ", " + value.getnesting()));
+            if (i != symbol_table.size() - 1) System.out.println("-------");
         }
-
-        // L'identificatore non è stato trovato nella tabella dei simboli
-        // Gesto l'errore o restituisco un tipo di default
-        System.out.println("Type Error: Variable " + id + " not found in symbol table");
-        return new ErrorType(); //se non è stato trovato l'id ritorna un errore
+        System.out.println("************************** \n");
     }
-*/
+
+    // cerca un id specificato nella tabella e restituisce il nesting level in cui viene trovato
+    public Integer nslookup(String id) {
+        int n = symbol_table.size() - 1;
+        boolean found = false;
+        while ((n >= 0) && !found) {
+            HashMap<String, STentry> H = symbol_table.get(n);
+            if (H.get(id) != null)
+                found = true;
+            else
+                n = n - 1;
+        }
+        return n; // = livello in cui viene trovato l'id, se l'id non viene trovato restituisce -1
+    }
+
 
 }

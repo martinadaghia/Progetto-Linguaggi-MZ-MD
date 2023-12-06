@@ -19,6 +19,7 @@ public class IdNode implements Node {
         ArrayList<SemanticError> errors = new ArrayList<SemanticError>();
         nesting = _nesting;
         STentry st_type = ST.lookup(id);
+
         if (st_type == null) {
             errors.add(new SemanticError("Id " + id + " not declared"));
         } else {
@@ -37,7 +38,6 @@ public class IdNode implements Node {
             }
             /*Se è dichiarata in un altro scope e non è ancora stata inizializzata -> warning
             } else if(!ST.top_lookup(id) && !st_type.getInitialized()) {
-
                 System.out.println("WARNING: var " + id + " (nestlvl: " + st_type.getnesting() + ") might not be initialised");
             }*/
             type = st_type;

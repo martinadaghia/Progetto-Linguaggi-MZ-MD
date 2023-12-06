@@ -32,10 +32,11 @@ public class IfStmNode implements Node {
         SymbolTable elseST = new SymbolTable();
 
         if (thenbranches != null) {
+            // visitiamo tutto il ramo then
             for (Node tb : thenbranches) {
                 errors.addAll(tb.checkSemantics(ST, _nesting));
             }
-            // salviamo la ST aggiornata del then
+            // salviamo la ST e l'offset aggiornati del then
             thenST.setSymbol_table(ST.getSymbol_table());
             thenST.setOffset(ST.getOffset());
 
@@ -43,6 +44,7 @@ public class IfStmNode implements Node {
         }
 
         if (elsebranches != null) {
+            // visitiamo tutto il ramo else
             for (Node eb : elsebranches) {
                 errors.addAll(eb.checkSemantics(ST, _nesting));
             }

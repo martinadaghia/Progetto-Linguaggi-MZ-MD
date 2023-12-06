@@ -19,7 +19,7 @@ int x;
 if(true){
     x;
 }
-*/
+
 int u;
 void f(int m, int n){
       int x ;
@@ -28,8 +28,18 @@ void f(int m, int n){
 }
 f(4,5) ;
 u;
+*/
 
-
+int a;
+int b;
+int c;
+a=3;
+if (a>0){
+    b=3;
+} else {
+    c=7;
+}
+b
 
 
 

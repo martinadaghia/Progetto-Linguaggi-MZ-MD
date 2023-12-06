@@ -27,9 +27,9 @@ public class EqualNode implements Node {
     public Type typeCheck() {
         Type tl = left.typeCheck();
         Type tr = right.typeCheck();
-        if (tl.getClass().equals(tr.getClass()))
+        if (tl.getClass().equals(tr.getClass())) {
             return new BoolType();
-        else {
+        } else {
             System.out.println("Type Error: Different types in equality");
             return new ErrorType();
         }

@@ -89,7 +89,7 @@ public class CallFunNode implements Node {
                 + "//end CallFunNode\n";
     }
 
-    public String toPrint(String s) {  //
+    public String toPrint(String s) {
         String parlstr = "";
         for (Node par : parameters)
             parlstr += par.toPrint(s + "  ");
