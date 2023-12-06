@@ -142,8 +142,8 @@ int x;
   }
   f(10);
   a=3;
-*/
 
+*/
 
 int x; int a;
 void f ( int n){
@@ -152,5 +152,22 @@ void f ( int n){
 }
 x=1;
 f(10)
+
+/*
+int x;
+void f ( int n){
+if (n == 0) {
+n = 0 ;
+} else {
+x = x * n ;
+f (n-1);
+}
+}
+x= 1 ;
+f (10)
+*/
+
+
+
 
 

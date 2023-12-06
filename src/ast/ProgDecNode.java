@@ -8,14 +8,14 @@ import semanticanalysis.SymbolTable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class MultiDecNode implements Node {
+public class ProgDecNode implements Node {
 
     private ArrayList<Node> dec;
     private ArrayList<Node> stm;
     private Node exp;
     private int nesting;
 
-    public MultiDecNode(ArrayList<Node> dec, ArrayList<Node> stm, Node exp) {
+    public ProgDecNode(ArrayList<Node> dec, ArrayList<Node> stm, Node exp) {
         this.dec = dec;
         this.stm = stm;
         this.exp = exp;

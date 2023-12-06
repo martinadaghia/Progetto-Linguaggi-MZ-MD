@@ -1,3 +1,3 @@
 Numero totale di errori: 1
  ** Analisi lessicale fallita ** 
-ERRORE lessicale  alla linea 153, posizione 0: mismatched input '<EOF>' expecting {'(', 'int', 'bool', 'void', 'if', 'true', 'false', '!', INTEGER, ID}
+ERRORE lessicale  alla linea 172, posizione 5: no viable alternative at input 'voiff'

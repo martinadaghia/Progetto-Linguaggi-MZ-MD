@@ -1,10 +1,10 @@
 package ast;
 
-import java.util.ArrayList;
-
 import semanticanalysis.STentry;
 import semanticanalysis.SemanticError;
 import semanticanalysis.SymbolTable;
+
+import java.util.ArrayList;
 
 public class IdNode implements Node {
     private String id;
@@ -22,10 +22,10 @@ public class IdNode implements Node {
 
         if (st_type == null) {
             errors.add(new SemanticError("Id " + id + " not declared"));
+
         } else {
             // Se è dichiarata nello scope corrente ma non è inizializzata ritorna errore
             if (ST.top_lookup(id) && !st_type.getInitialized()) {
-
                 // Verifica che la variabile sia dichiarata nell'ambiente corrente
                 if (ST.lookup(id).getnesting() == nesting) {
                     // Aggiungi un errore se la variabile non è stata inizializzata
@@ -34,15 +34,15 @@ public class IdNode implements Node {
                     // Verifica che la variabile sia dichiarata in un altro scope ed è sempre non inizializzata
                     System.out.println("WARNING: var " + id + " (nestlvl: " + st_type.getnesting() + ") might not be initialised");
                 }
-
-            }
-            /* Se è dichiarata in un altro scope e non è ancora stata inizializzata -> warning
-            } else if(!ST.top_lookup(id) && !st_type.getInitialized()) {
+                // Se è dichiarata in un altro scope e non è ancora stata inizializzata -> warning
+            } else if (!ST.top_lookup(id) && !st_type.getInitialized()) {
                 System.out.println("WARNING: var " + id + " (nestlvl: " + st_type.getnesting() + ") might not be initialised");
-            }*/
+            }
             type = st_type;
         }
+
         return errors;
+
     }
 
     public Type typeCheck() {

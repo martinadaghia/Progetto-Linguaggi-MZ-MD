@@ -37,7 +37,7 @@ public class SimpLanPlusVisitorImpl extends SimpLanPlusBaseVisitor<Node> {
             expression = visit(ctx.exp());
         }
 
-        return new MultiDecNode(declarations, statements, expression);
+        return new ProgDecNode(declarations, statements, expression);
     }
 
     @Override
