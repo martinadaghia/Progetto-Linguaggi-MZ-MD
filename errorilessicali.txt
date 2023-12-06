@@ -1,3 +1,4 @@
-Numero totale di errori: 1
  ** Analisi lessicale fallita ** 
-ERRORE lessicale  alla linea 172, posizione 5: no viable alternative at input 'voiff'
+Numero totale di errori: 1
+
+ERRORE lessicale  alla linea 179, posizione 11: no viable alternative at input 'if(n<=0){tot;'

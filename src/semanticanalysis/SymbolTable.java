@@ -142,7 +142,7 @@ public class SymbolTable {
                         if (e1.getKey().equals(e2.getKey())) {
                             // ottieni l'entry della variabile in comune corrente nella tabella corrente
                             STentry currEntry = this.lookup(e1.getKey());
-                            // se entrambe le tabelle inizializzano la variabile, la segna come inizializzata
+                            // se entrambe le tabelle inizializzano la stessa variabile, la segna come inizializzata
                             if (currEntry != null && e1.getValue().getInitialized() && e2.getValue().getInitialized()) {
                                 currEntry.setInitialized(true);
                             }
