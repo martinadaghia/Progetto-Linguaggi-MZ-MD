@@ -131,7 +131,8 @@ f(10);
 a
 */
 
-/*int x;
+/*
+int x;
   int a;
   int f(int n){
       x=a+2;
