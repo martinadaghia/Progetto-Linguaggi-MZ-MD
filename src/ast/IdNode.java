@@ -23,7 +23,7 @@ public class IdNode implements Node {
         if (st_type == null) {
             errors.add(new SemanticError("Id " + id + " not declared"));
         } else {
-            // Se è dichiarata nello scope corrente ma non è inizializzata ritono errore
+            // Se è dichiarata nello scope corrente ma non è inizializzata ritorna errore
             if (ST.top_lookup(id) && !st_type.getInitialized()) {
 
                 // Verifica che la variabile sia dichiarata nell'ambiente corrente
@@ -31,7 +31,7 @@ public class IdNode implements Node {
                     // Aggiungi un errore se la variabile non è stata inizializzata
                     errors.add(new SemanticError("Var " + id + " has not been initialized"));
                 } else {
-                    // Verifica che la variabile sia dichiarata in un'altro scope ed è sempre non inizializzata
+                    // Verifica che la variabile sia dichiarata in un altro scope ed è sempre non inizializzata
                     System.out.println("WARNING: var " + id + " (nestlvl: " + st_type.getnesting() + ") might not be initialised");
                 }
 

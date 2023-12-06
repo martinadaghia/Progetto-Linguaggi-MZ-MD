@@ -46,7 +46,6 @@ public class Main {
         int numErrors = errorsList.size();
 
         // CONTROLLO ERRORI LESSICALI NO SINTATTICI
-
         if (numErrors > 0) {
             System.out.println("The program was not in the right format. Exiting the compilation process now");
             System.out.println(" ** Analisi lessicale fallita ** ");
@@ -71,7 +70,7 @@ public class Main {
 
             // ERRORI SEMANTICI
             SymbolTable ST = new SymbolTable();
-            ArrayList<SemanticError> errors = ast.checkSemantics(ST, 0);
+            ArrayList<SemanticError> errors = ast.checkSemantics(ST, 0); // controllo semantico su tutto l'albero
 
             if (errors.size() > 0) {
                 System.out.println(" ** Analisi semantica fallita! ** ");

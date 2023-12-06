@@ -65,7 +65,7 @@ public class FunNode implements Node {
                 errors.addAll(body.checkSemantics(ST, nesting + 1));
             }
 
-            ST.remove(); // rimuove l'ambiente della funzione dalla ST
+            ST.remove(); // esco dall'ambiente della funzione dalla ST
             ST.restore(oldST.getSymbol_table(), oldST.getOffset()); // ripristina la vecchia ST
             ST.insert(id, type, nesting, flabel); // reinserisce la funzione nella ST
         }

@@ -94,7 +94,7 @@ public class SymbolTable {
     }
 
     // SETTER
-    // se in input riceve un'ArrayList appartenente a un'altra ST, non referenziamo la ST precedente, ma ne creiamo una copia assestante
+    // facciamo la copia della ST corrente prima di entrare in un nuovo scope
     public void setSymbol_table(ArrayList<HashMap<String, STentry>> newST) {
         // variabili temporanee per copiare gli elementi della nuova tabella
         String currString = "";
