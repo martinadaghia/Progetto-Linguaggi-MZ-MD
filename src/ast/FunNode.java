@@ -70,7 +70,7 @@ public class FunNode implements Node {
             ST.insert(id, type, nesting, flabel); // reinserisce la funzione nella ST
         }
 
-        return errors; // lista errori semantici
+        return errors; //  lista errori semantici
     }
 
 

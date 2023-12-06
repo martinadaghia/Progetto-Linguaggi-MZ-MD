@@ -18,7 +18,7 @@ public class STentry {
         this.initialized = initialized;
     }
 
-    //costruttore per la funzione perchè le label le hanno solo loro
+    // costruttore per la funzione perchè le label le hanno solo loro
     public STentry(Type type, int offset, int nesting, String label) {
         this.type = type;
         this.offset = offset;

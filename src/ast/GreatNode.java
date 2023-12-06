@@ -45,7 +45,7 @@ public class GreatNode implements Node {
                 "pushr A0 \n" +
                 right.codeGeneration() +
                 "popr T1 \n" +
-                "bleq T1 A0 " + labelTrue + " \n" + //ragionare al contrario:  se left è <= di right allora false (> == !(<=))
+                "bleq T1 A0 " + labelTrue + " \n" + // ragionare al contrario: se left è <= di right allora false (> == !(<=))
                 "storei A0 1 \n" +
                 "b " + labelEnd + " \n" +
                 labelTrue + ": \n" +

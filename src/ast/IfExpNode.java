@@ -32,7 +32,7 @@ public class IfExpNode implements Node {
         SymbolTable oldST = new SymbolTable();
         oldST.setSymbol_table(ST.getSymbol_table());
         oldST.setOffset(ST.getOffset());
-        // salviamo le ST generate nel then e nell'else per confrontarle in seguito
+        //  salviamo le ST generate nel then e nell'else per confrontarle in seguito
         SymbolTable thenST = new SymbolTable();
         SymbolTable elseST = new SymbolTable();
 
@@ -60,7 +60,7 @@ public class IfExpNode implements Node {
 
         ST.restore(oldST.getSymbol_table(), oldST.getOffset());
 
-        // facciamo il caso pessimo tra le due ST
+        //  facciamo il caso pessimo tra le due ST
         ST.union(thenST, elseST);
 
         return errors;

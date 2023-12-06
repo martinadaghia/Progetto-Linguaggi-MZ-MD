@@ -36,7 +36,7 @@ public class IdNode implements Node {
                 }
 
             }
-            /*Se è dichiarata in un altro scope e non è ancora stata inizializzata -> warning
+            /* Se è dichiarata in un altro scope e non è ancora stata inizializzata -> warning
             } else if(!ST.top_lookup(id) && !st_type.getInitialized()) {
                 System.out.println("WARNING: var " + id + " (nestlvl: " + st_type.getnesting() + ") might not be initialised");
             }*/

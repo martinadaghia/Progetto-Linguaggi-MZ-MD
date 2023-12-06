@@ -27,7 +27,7 @@ public class IfStmNode implements Node {
         SymbolTable oldST = new SymbolTable();
         oldST.setSymbol_table(ST.getSymbol_table());
         oldST.setOffset(ST.getOffset());
-        // salviamo le ST generate nel then e nell'else per confrontarle in seguito
+        //  salviamo le ST generate nel then e nell'else per confrontarle in seguito
         SymbolTable thenST = new SymbolTable();
         SymbolTable elseST = new SymbolTable();
 
@@ -36,7 +36,7 @@ public class IfStmNode implements Node {
             for (Node tb : thenbranches) {
                 errors.addAll(tb.checkSemantics(ST, _nesting));
             }
-            // salviamo la ST e l'offset aggiornati del then
+            //  salviamo la ST e l'offset aggiornati del then
             thenST.setSymbol_table(ST.getSymbol_table());
             thenST.setOffset(ST.getOffset());
 

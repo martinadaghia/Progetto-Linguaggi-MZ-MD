@@ -58,7 +58,7 @@ public class CallFunNode implements Node {
                 else return new ErrorType();
             }
         } else {
-            // se la funzione chiamata non è di tipo ArrowType --> errore
+            // se la funzione chiamata non è di tipo ArrowType -->  errore
             System.out.println("Invocation of a non-function " + id);
             return new ErrorType();
         }

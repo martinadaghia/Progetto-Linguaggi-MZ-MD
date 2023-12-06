@@ -51,7 +51,7 @@ public class SymbolTable {
         offset.add(1); // si inizia da 2 perchè prima ci sono FP e AL
     }
 
-    // rimuove l'ultimo ambiente della tabella
+    //  rimuove l'ultimo ambiente della tabella
     public void remove() {
         int x = symbol_table.size();
         symbol_table.remove(x - 1);

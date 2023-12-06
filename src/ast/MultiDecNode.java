@@ -23,7 +23,7 @@ public class MultiDecNode implements Node {
 
     public ArrayList<SemanticError> checkSemantics(SymbolTable ST, int _nesting) {
         nesting = _nesting + 1;
-        HashMap<String, STentry> H = new HashMap<String, STentry>(); //creando un nuovo programma, creiamo un nuovo scope
+        HashMap<String, STentry> H = new HashMap<String, STentry>(); // creando un nuovo programma, creiamo un nuovo scope
         ST.add(H);
 
         //declare resulting list
